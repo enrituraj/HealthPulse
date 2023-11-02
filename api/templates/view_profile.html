@@ -1,0 +1,51 @@
+{% extends 'layouts/base.html' %}
+{% block title %}
+    <title>home page</title>
+{% endblock title %}
+{% block content %}
+    <main class="main">
+        <div class="main_wrapper">
+            <h1>login</h1>
+            <div class="form_box">
+                <h2>View Profile</h2>
+
+                <div class="profile-info">
+                    <img src="path/to/user/profile/picture.jpg" alt="Profile Picture">
+                    <p>Username: JohnDoe</p>
+                    <p>Email: johndoe@example.com</p>
+                </div>
+        
+                <h3>Update Profile Picture</h3>
+                <form id="profile-picture-form" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="profile-picture">Choose Profile Picture:</label>
+                        <input type="file" id="profile-picture" name="profilePicture" accept="image/*" required>
+                    </div>
+        
+                    <div class="form-group">
+                        <input type="submit" value="Upload Picture">
+                    </div>
+                </form>
+        
+                <h3>Update Profile Information</h3>
+                <form id="profile-info-form">
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username" value="JohnDoe" required>
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" value="johndoe@example.com" required>
+                    </div>
+        
+                    <div class="form-group">
+                        <input type="submit" value="Update Profile">
+                    </div>
+                </form>
+
+</div>
+</div>
+</main>
+{% endblock content %}
+    

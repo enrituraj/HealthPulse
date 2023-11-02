@@ -3,11 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% block title %}{% endblock title %}
     <link rel="shortcut icon" href="./../../static/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./../../static/css/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    {% block title %}{% endblock title %}
+
 </head>
 <body>
+    
+    <nav class="navbar">
+        <div class="menu_left">
+            <button class="toggle lg-hidden only_lg" id="menu_toggle">
+                <i class="bx bx-menu"></i>
+            </button>
+            <div class="logo">
+                <a href="/" class="logo_text">
+                    <span><i class='bx bx-shield-plus'></i></span>
+                    Diabetes Predictor</a>
+            </div>
+            <ul class="main_menu" id="menu">
+                <li class="menu_li"> 
+                    <a href="/diabetes" class="menu_link">Diabetes</a>
+                </li>
+                <li class="menu_li">
+                    <a href="/heart_diseases" class="menu_link">Heart Diseases</a>
+                </li>
+                <li class="menu_li">
+                    <a href="/brain_tumor" class="menu_link">Brain Tumor</a>
+                </li>
+                <li class="menu_li">
+                    <a href="/login" class="menu_link lg-hidden">Login</a>
+                </li>
+                <li class="menu_li">
+                    <a href="/register" class="menu_link lg-hidden">Sign up</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="menu_right">
+            <a href="/login" class="btn btn-login sm-hidden">Login</a>
+            <a href="/register" class="btn btn-register sm-hidden">Signup</a>
+            <button class="toggle lg-hidden only_sm" id="menu_toggle2">
+                <i class="bx bx-menu"></i>
+            </button>
+        </div>
+    </nav>
+
     {% block content %}{% endblock content %}
+
+
+    <script src="./../../static/js/script.js"></script>
 </body>
 </html>
