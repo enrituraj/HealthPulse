@@ -10,7 +10,8 @@
 
 </head>
 <body>
-    
+    <header>
+        
     <nav class="navbar">
         <div class="menu_left">
             <button class="toggle lg-hidden only_lg" id="menu_toggle">
@@ -19,7 +20,7 @@
             <div class="logo">
                 <a href="/" class="logo_text">
                     <span><i class='bx bx-shield-plus'></i></span>
-                    Diabetes Predictor</a>
+                    HealthPulse</a>
             </div>
             <ul class="main_menu" id="menu">
                 <li class="menu_li"> 
@@ -27,9 +28,6 @@
                 </li>
                 <li class="menu_li">
                     <a href="/heart_diseases" class="menu_link">Heart Diseases</a>
-                </li>
-                <li class="menu_li">
-                    <a href="/brain_tumor" class="menu_link">Brain Tumor</a>
                 </li>
                 <li class="menu_li">
                     <a href="/login" class="menu_link lg-hidden">Login</a>
@@ -48,8 +46,10 @@
             </button>
         </div>
     </nav>
-
+    </header>
+        
     {% block content %}{% endblock content %}
+    
 
 
     <script src="./../../static/js/script.js"></script>
