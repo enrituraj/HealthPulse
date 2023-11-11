@@ -72,3 +72,10 @@
     border-radius: 5px;
     font-size: 16px;
 }
+
+@media (max-width:425px) {
+    .form_box_title{
+        padding: 8px 16px;
+        font-size: 20px;
+    }
+}

@@ -14,6 +14,7 @@
     border-radius: 8px;
     box-shadow: 1px 1px 8px #bcbcbc;
     background-size: cover;
+    background-position: bottom;
     background-repeat: no-repeat;
 }
 
@@ -22,7 +23,8 @@
 .form_box{
     position: relative;
     padding: 28px;
-    width: 400px;
+    max-width: 400px;
+    width: 100%;
     margin: auto;
     background-color: #fff;
     border: 1px solid #ddd;
@@ -88,4 +90,10 @@
     width: 100%;
     font-size: 17px;
     border-radius: 8px;
+}
+
+@media (max-width:880px) {
+    .main{
+        padding: 20px;
+    }
 }
