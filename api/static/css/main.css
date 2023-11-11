@@ -1,5 +1,6 @@
 .main{
     padding: 40px;
+    min-height: 100vh;
     background-color: #ececec;
     background: url('./../img/bg.jpg');
     background-size: cover;
@@ -19,13 +20,17 @@
 
 
 .form_box{
-    padding: 20px;
+    position: relative;
+    padding: 28px;
     width: 400px;
     margin: auto;
     background-color: #fff;
     border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px #6464646b;
+    box-shadow:0 0 50px rgba(0,0,0,0.06);
+}
+.form_box.form_custom{
+    padding-top: 42px;
+    margin: 2rem auto;
 }
 .input_box {
     position: relative;

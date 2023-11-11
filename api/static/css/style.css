@@ -18,6 +18,24 @@ a {
     text-decoration: none;
 }
 
+.alert {
+    padding: 12px 12px;
+    background: #686968;
+    color: #fff;
+    border-radius: 5px;
+    margin: 8px;
+}
+.alert.alert-error{
+    background: #f44336;
+    color: #fff;
+    
+}
+.alert.alert-success{
+    background: #4CAF50;
+    color: #fff;
+    
+}
+
 .lg-hidden {
     display: none;
 }

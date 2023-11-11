@@ -1,43 +1,57 @@
 {% extends 'layouts/base.html' %}
 {% block title %}
-    <title>home page</title>
+<title>Login</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}">
+
 {% endblock title %}
 {% block content %}
 
 
-    <main class="main">
-        <div class="main_wrapper">
-            <h1>login</h1>
-            <div class="form_box">
+<main class="main">
+    <div class="main_wrapper">
+        <div class="form_box form_custom">
+
+            <h2 class="form_box_title">Login</h2>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            <div class="alert_box">
+                {% for category,message in messages %}
+                <div class="alert alert-{{category}}">{{ message }}</div>
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% endwith %}
+            <form id="login-form" method="post" action="{{ url_for('login') }}">
                 
-        <h2>Login</h2>
-        
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        <ul>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
-    {% endwith %}
-        <form id="login-form" method="post" action="{{ url_for('login') }}">
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="text" id="email" name="email" required>
-            </div>
 
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
+                <div class="form-group">
+                    <input type="email" name="email" class="input-text" placeholder="Email Address">
+                    <i class='bx bx-envelope'></i>
+                    <span class="focus-border"></span>
+                </div>
 
-            <div class="form-group">
-                <input type="submit" value="Login">
-            </div>
-        </form>
+                <div class="form-group">
+                    <input type="password" name="password" class="input-text" placeholder="Password">
+                    <i class='bx bx-lock-alt'></i>
+                    <span class="focus-border"></span>
+                </div>
 
-</div>
-</div>
+                <div class="form-group">
+                    <input type="checkbox" class="checkbox" name="termServices" id="termServices">
+                    <label class="form-check-label" for="termServices">
+                        Remember me
+                    </label>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn-form_submit" value="Login Now">
+                </div>
+
+            </form>
+            <p class="text_muted text-center">Already have an account ?<a href="{{ url_for('login') }}"> Login</a></p>
+
+        </div>
+    </div>
 </main>
 {% endblock content %}
