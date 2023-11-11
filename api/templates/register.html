@@ -1,46 +1,50 @@
 {% extends 'layouts/base.html' %}
 {% block title %}
-    <title>home page</title>
+<title>home page</title>
 {% endblock title %}
 {% block content %}
-    <h1>Health app is comming soon </h1>
-    <h2>
-        keep waiting
-    </h2>
-    <main class="main">
-        <div class="main_wrapper">
-            <h1>login</h1>
-            <div class="form_box">
-                <h2>Signup</h2>
-        <form id="signup-form">
-            <div class="form-group">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
-            </div>
+<main class="main">
+    <div class="main_wrapper">
+        <div class="form_box">
+            <h2>Signup</h2>
 
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            {% endwith %}
+            <form id="signup-form" method="post" action="{{ url_for('register') }}">
+                <div class="form-group">
+                    <label for="name">name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
 
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
 
-            <div class="form-group">
-                <label for="confirm-password">Confirm Password:</label>
-                <input type="password" id="confirm-password" name="confirmPassword" required>
-            </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
 
-            <div class="form-group">
-                <input type="submit" value="Signup">
-            </div>
-        </form>
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password:</label>
+                    <input type="password" id="confirm-password" name="confirmPassword" required>
+                </div>
 
-</div>
-</div>
+                <div class="form-group">
+                    <input type="submit" value="Signup">
+                </div>
+            </form>
+
+        </div>
+    </div>
 </main>
 
 {% endblock content %}
-

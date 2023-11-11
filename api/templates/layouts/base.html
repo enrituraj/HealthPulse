@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="./../../static/img/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="./../../static/css/style.css">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     {% block title %}{% endblock title %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
 </head>
 <body>
@@ -45,6 +45,11 @@
                 <i class="bx bx-menu"></i>
             </button>
         </div>
+        {% if user %}
+    <h2>Welcome, {{ user['name'] }}</h2>
+    <p>Email: {{ user['email'] }}</p>
+    <a href="{{ url_for('logout') }}">Logout</a>
+    {% endif %}
     </nav>
     </header>
         
@@ -52,6 +57,7 @@
     
 
 
-    <script src="./../../static/js/script.js"></script>
+    <!-- <script src="./../../static/js/script.js"></script> -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
