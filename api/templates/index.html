@@ -1,19 +1,35 @@
 {% extends 'layouts/base.html' %}
 {% block title %}
     <title>home page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
 {% endblock title %}
 {% block content %}
-    <h1>Health app is comming soon </h1>
-    <h2>
-        keep waiting
-    </h2>
+<main class="main">
+    <div class="main_wrapper">
 
-    
-    {% if profile_data %}
-        <h2>name, {{ 'N/A' if profile_data['name'] is none else profile_data['name'] }}</h2>
-        <h2>email, {{ 'N/A' if profile_data['email'] is none else profile_data['email'] }}</h2>
-        <h2>dob, {{ 'N/A' if profile_data['dob'] is none else profile_data['dob'] }}</h2>
-    {% endif %}
+        <div class="card">
+        <h1>Dashboard </h1>
+
+        <div class="alert alert-error">
+            The web page is under maintainance.
+            <br>
+            thanks for visiting.
+        </div>
+        
+        {% if user %}
+            <h2>Welcome, {{ user.name }}</h2>
+            
+        <div class="alert alert-success">
+            The Profile page is ready, 
+            <a href="/my_profile"><u> Click here</u></a>
+            to view your profile data.
+        </div>
+        {% endif %}
+
+        </div>
+    </div>
+</main>
 
 
 

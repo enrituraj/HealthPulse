@@ -1,4 +1,11 @@
 from flask import Flask,render_template,redirect,url_for,request,flash,session
+
+# Form Validation
+import secrets
+import re
+from werkzeug.security import generate_password_hash, check_password_hash
+from datetime import datetime
+
 #connecting to mongodb atlas
 import pymongo
 from pymongo.mongo_client import MongoClient
@@ -65,38 +72,6 @@ def brain_tumor():
     return render_template('brain_tumor.html')
 
     
-@app.route('/login',methods=['GET', 'POST'])
-def login():
-    if request.method == 'POST':
-        email = request.form.get('email')
-        password = request.form.get('password')
-        user = users.find_one({'email': email})
-        if user and user['password']== password:
-            session['user'] = {'id': str(user['_id']), 'name': user['name'], 'email': user['email']}
-            # flash('Login successful!', 'success')
-            return redirect(url_for('home'))
-        else:
-            flash('Invalid email or password. Please try again.', 'error')
-    return render_template('login.html')
-    
-@app.route('/register', methods=['GET', 'POST'])
-def register():
-    if request.method == 'POST':
-        name = request.form.get('name')
-        email = request.form.get('email')
-
-        existing_user = users.find_one({'email': email})
-
-        if existing_user:
-            flash('Email already registered. Please use a different email.', 'error')
-        else:
-            user_data = {'name': name, 'email': email}
-            users.insert_one(user_data)
-            flash('Signup successful! Please login.', 'success')
-            return redirect(url_for('login'))
-        
-    return render_template('register.html')
-
 @app.route('/logout')
 def logout():
     session.pop('user', None)
@@ -125,6 +100,102 @@ def my_profile():
 
 
 
+
+
+
+
+# generate uuid for unique identification of user
+def generate_unique_id():
+    return secrets.token_hex(4)[:8]
+
+# validate name
+def is_valid_name(name):
+    return len(name) >= 3
+
+#validate email
+def is_valid_email(email):
+    # Regular expression for a simple email validation
+    email_pattern = re.compile(r"[^@]+@[^@]+\.[^@]+")
+    return bool(re.match(email_pattern, email))
+
+#validate password
+def is_valid_password(password):
+    password_pattern = re.compile(r'^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$')
+    return bool(re.match(password_pattern, password))
+
+
+@app.route('/login',methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        email = request.form.get('email')
+        password = request.form.get('password')
+        if not email or not password:
+            flash('All fields must be filled out.', 'error')
+        elif not is_valid_email(email):
+            flash('Please enter a valid email address.', 'error')
+        elif not is_valid_password(password):
+            flash('Please enter a strong password.', 'error')
+        else:
+            #finding user with that email
+            user = users.find_one({'email': email})
+            if user and check_password_hash(user['password'], password):
+                session['user'] = {'id': str(user['_id']), 'name': user['name'], 'email': user['email']}
+                # flash('Login successful!', 'success')
+                return redirect(url_for('home'))
+            else:
+                flash('Invalid email or password. Please try again.', 'error')
+    return render_template('login.html')
+
+
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        name = request.form.get('name')
+        email = request.form.get('email')
+        password = request.form.get('password')
+        confirm_password = request.form.get('confirm_password')
+        term_condition = request.form.get('term_condition')
+
+        # validating the user input
+        if not name or not email or not password or not confirm_password:
+            flash('All fields must be filled out.', 'error')
+        elif password != confirm_password:
+            flash('Password and confirm password do not match.', 'error')
+        elif not is_valid_name(name):
+            flash('Please enter a valid name.', 'error')
+        elif not is_valid_email(email):
+            flash('Please enter a valid email address.', 'error')
+        elif not is_valid_password(password):
+            flash('Please enter a strong password.', 'error')
+        elif not term_condition:
+            flash('Terms and conditions must be accepted.', 'error')
+        else:
+            #checking if email exists or not
+            existing_user = users.find_one({'email': email})
+            if existing_user:
+                flash('Email already registered. Please use a different email.', 'error')
+            else:
+                #hashing password
+                hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
+                #genrating unique_hash
+                unique_id = generate_unique_id()
+                # Get the current time
+                current_time = datetime.utcnow()
+
+                user_data = {
+                    'uuid':unique_id,
+                    'name': name,
+                    'email': email,
+                    'password':hashed_password,
+                    'text_password':password, # removed before going to live
+                    'created_At':current_time
+                }
+
+                users.insert_one(user_data)
+                flash('Signup successful! Please login.', 'success')
+                return redirect(url_for('login'))
+    return render_template('register.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
-
