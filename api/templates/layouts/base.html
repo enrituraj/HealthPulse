@@ -29,22 +29,30 @@
                 <li class="menu_li">
                     <a href="/heart_diseases" class="menu_link">Heart Diseases</a>
                 </li>
+                {% if user %}
+                <li class="menu_li">
+                    <a href="/my_profile" class="menu_link">My Profile</a>
+                </li>
+                <li class="menu_li">
+                    <a href="/logout" class="menu_link lg-hidden">Logout</a>
+                </li>
+                {% else %} 
                 <li class="menu_li">
                     <a href="/login" class="menu_link lg-hidden">Login</a>
                 </li>
                 <li class="menu_li">
                     <a href="/register" class="menu_link lg-hidden">Sign up</a>
                 </li>
+                {% endif %}
             </ul>
         </div>
 
         <div class="menu_right">
-            {% if not user %}
-            <a href="/login" class="btn btn-login sm-hidden">Login</a>
-            <a href="/register" class="btn btn-register sm-hidden">Signup</a>
-            {% endif %}
             {% if user %}
-                <a href="{{ url_for('logout') }}" class="btn "><i class='bx bx-log-out bx-rotate-180' ></i> Logout</a>
+                <a href="{{ url_for('logout') }}" class="btn sm-hidden"><i class='bx bx-log-out bx-rotate-180' ></i> Logout</a>
+            {% else %}            
+                <a href="/login" class="btn btn-login sm-hidden">Login</a>
+                <a href="/register" class="btn btn-register sm-hidden">Signup</a>
             {% endif %}
 
             <button class="toggle lg-hidden only_sm" id="menu_toggle2">
