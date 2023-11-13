@@ -1,21 +1,46 @@
 from flask import Flask,render_template,redirect,url_for,request,flash,session
-from flask_pymongo import PyMongo
+#connecting to mongodb atlas
+import pymongo
+from pymongo.mongo_client import MongoClient
+from pymongo.server_api import ServerApi
+#enviroment variable setup
+from dotenv import load_dotenv, find_dotenv
+import os
+# Locate the .env file outside of the api directory
+dotenv_path = find_dotenv(raise_error_if_not_found=True)
+load_dotenv(dotenv_path)
+# Access environment variables
+secret_key = os.getenv('SECRET_KEY')
+mongo_uri = os.getenv('MONGO_URI')
+
+
 
 app = Flask(__name__)
-app.secret_key = 'my_secret_key'
+app.secret_key = secret_key
 
-#connecting to database
+uri = mongo_uri
+# Create a new client and connect to the server
+client = MongoClient(uri, server_api=ServerApi('1'))
+# Send a ping to confirm a successful connection
 try:
-    app.config["MONGO_URI"] = "mongodb://localhost:27017/myDatabase"
-    mongo = PyMongo(app)
-    print("Connected to MongoDB successfully!")
+    client.admin.command('ping')
+    print("Pinged your deployment. You successfully connected to MongoDB!")
 except Exception as e:
-    print(f"Error connecting to MongoDB: {e}")
+    print(e)
+#database initialization
+db = client.healthpulse
+# use a collection named "recipes"
+users = db["user"]
+
+
+
+
+#route setup
+
 
 
 @app.route('/')
 def home():
-    # mongo.db.inventory.insert_one({"a":1,"b":2})
         user = session.get('user')
 
         if user:
@@ -44,7 +69,7 @@ def login():
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
-        user = mongo.db.users.find_one({'email': email})
+        user = users.find_one({'email': email})
         if user and user['password']== password:
             session['user'] = {'id': str(user['_id']), 'name': user['name'], 'email': user['email']}
             # flash('Login successful!', 'success')
@@ -59,13 +84,13 @@ def register():
         name = request.form.get('name')
         email = request.form.get('email')
 
-        existing_user = mongo.db.users.find_one({'email': email})
+        existing_user = users.find_one({'email': email})
 
         if existing_user:
             flash('Email already registered. Please use a different email.', 'error')
         else:
             user_data = {'name': name, 'email': email}
-            mongo.db.users.insert_one(user_data)
+            users.insert_one(user_data)
             flash('Signup successful! Please login.', 'success')
             return redirect(url_for('login'))
         
@@ -85,7 +110,7 @@ def my_profile():
     user = session.get('user')
     if user:
         id = user['email']
-        profile_data = mongo.db.users.find_one({'email': id})
+        profile_data = users.find_one({'email': id})
         print(profile_data)
         return render_template('my_profile.html', user=user,profile_data=profile_data)
     else:
