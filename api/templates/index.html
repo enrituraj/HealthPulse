@@ -7,4 +7,14 @@
     <h2>
         keep waiting
     </h2>
+
+    
+    {% if profile_data %}
+        <h2>name, {{ 'N/A' if profile_data['name'] is none else profile_data['name'] }}</h2>
+        <h2>email, {{ 'N/A' if profile_data['email'] is none else profile_data['email'] }}</h2>
+        <h2>dob, {{ 'N/A' if profile_data['dob'] is none else profile_data['dob'] }}</h2>
+    {% endif %}
+
+
+
 {% endblock content %}

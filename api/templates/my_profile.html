@@ -1,0 +1,175 @@
+{% extends 'layouts/base.html' %}
+{% block title %}
+    <title>Diabetes Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <style>
+        .card{
+            position: relative;
+            max-width: 850px;
+            width: 100%;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+        }
+        .card .box{
+            position: relative;
+            width: 100%;
+            border-radius: 15px;
+        }
+        .box:nth-child(1){
+            height: 250px;
+            background-color: #f00;
+            background: var(--cover_img);
+            border-bottom-left-radius: 0;
+            box-shadow: 0px 0px 20px #00000050;
+        }
+        .card .box:nth-child(2){
+            position: relative;
+            background-color: #fff;
+            width: 90%;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            padding: 80px 40px;
+            box-shadow: 0px 0px 10px #00000050;
+        }
+        .box:nth-child(1) .circle{
+            position: absolute;
+            bottom: -70%;
+            left: 2rem;
+            width: 180px;
+            height: 180px;
+            z-index: 1;
+            border-radius: 50%;
+            border: 15px dashed #fff;
+            background-color: #f00;
+            transform: translateY(-50%);
+        }
+        .circle img{
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+        table {
+            width: inherit;
+            border-collapse: collapse;
+            margin: 20px auto;
+            background-color: #fff;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .edit_profile{            
+            position: absolute;
+            top: -7%;
+            right: 2rem;
+            color: #fff;
+            padding: 20px 32px;
+            border-radius: 45px;
+            background: #091453;
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 32px;
+            border-top-left-radius: 32px;
+            border-top-right-radius: 4px;
+            border: 2px dashed #fff;
+            box-shadow: -8px -6px #fff;
+            transition: all 0.5s ease-in-out;
+        }
+        .edit_profile:hover{ 
+            letter-spacing: 2px;
+            }
+            .profile_pic_btn {
+                position: absolute;   
+                 bottom: 5%;
+    color: #787878;
+    right: 0px;
+    padding: 8px 10px 6px 10px;
+    background: #fff;
+    border: 1px solid #eee;
+    box-shadow: 0px 2px 4px #ccc;
+    border-radius: 50%;
+}
+    </style>
+
+    {% endblock title %}
+{% block content %}
+
+    
+<main class="main">
+    <div class="main_wrapper">
+
+        <div class="card">
+            <div class="box" style="--cover_img:url('https://img.freepik.com/free-photo/glowing-lines-human-heart-3d-shape-dark-background-generative-ai_191095-1435.jpg'); ">                
+                <div class="circle">
+                    <img src="{{ url_for('static', filename='img/avatar.png') }}" alt="profile image">
+                    <a href="" title="Change Profile Picture" class="profile_pic_btn">
+                        <i class='bx bx-edit'></i>
+                    </a>
+                </div>
+                
+            </div>
+            <div class="box">
+                <a href="" class="edit_profile">Edit profile</a>
+                <h1>Profile Information</h1>
+                <table>
+                    
+                    <tr>
+                        <td>UUID</td>
+                        <td>{{ profile_data.unique_id | default('N/A') }}</td>
+                    </tr>
+                    <tr>
+                        <td>Name</td>
+                        <td>{{ profile_data.name | default('N/A') }}</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>{{ profile_data.email | default('N/A') }}</td>
+                    </tr>
+                    <tr>
+                        <td>Dob</td>
+                        <td>{{ profile_data.dob | default('N/A') }}</td>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <td>{{ profile_data.address | default('N/A') }}</td>
+                    </tr>
+                    <tr>
+                        <td>Mobile No</td>
+                        <td>{{ profile_data.mobile_no | default('N/A') }}</td>
+                    </tr>
+                    <tr>
+                        <td>Joined At</td>
+                        <td>{{ profile_data.date | default('N/A') }}</td>
+                    </tr>
+                </table>
+
+
+            </div>
+        </div>
+
+
+    {% if profile_data %}
+        <!-- <h2>name, {{ 'N/A' if profile_data['name'] is none else profile_data['name'] }}</h2>
+        <h2>email, {{ 'N/A' if profile_data['email'] is none else profile_data['email'] }}</h2>
+        <h2>dob, {{ 'N/A' if profile_data['dob'] is none else profile_data['dob'] }}</h2> -->
+
+
+    {% endif %}
+
+    </div>
+</main>
+
+
+{% endblock content %}

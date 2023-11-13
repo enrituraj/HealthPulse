@@ -71,13 +71,33 @@ def register():
         
     return render_template('register.html')
 
-
-
 @app.route('/logout')
 def logout():
     session.pop('user', None)
     flash('Logout successful!', 'success')
     return redirect(url_for('login'))
+
+
+# after login
+
+@app.route('/my_profile')
+def my_profile():
+    user = session.get('user')
+    if user:
+        id = user['email']
+        profile_data = mongo.db.users.find_one({'email': id})
+        print(profile_data)
+        return render_template('my_profile.html', user=user,profile_data=profile_data)
+    else:
+        return render_template('my_profile.html',profile_data={})
+
+        # flash('You must be logged in to access this page.', 'error')
+        # return redirect(url_for('login'))
+        
+
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
