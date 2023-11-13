@@ -7,7 +7,8 @@ from pymongo.server_api import ServerApi
 from dotenv import load_dotenv, find_dotenv
 import os
 # Locate the .env file outside of the api directory
-dotenv_path = find_dotenv(raise_error_if_not_found=True)
+# dotenv_path = find_dotenv(raise_error_if_not_found=True)
+dotenv_path = find_dotenv()
 load_dotenv(dotenv_path)
 # Access environment variables
 secret_key = os.getenv('SECRET_KEY')
