@@ -85,22 +85,16 @@ def logout():
 def my_profile():
     user = session.get('user')
     if user:
-        id = user['email']
-        profile_data = users.find_one({'email': id})
+        id = user['uuid']
+        profile_data = users.find_one({'uuid': id})
         print(profile_data)
         return render_template('my_profile.html', user=user,profile_data=profile_data)
     else:
-        return render_template('my_profile.html',profile_data={})
+        return render_template('my_profile.html')
 
         # flash('You must be logged in to access this page.', 'error')
         # return redirect(url_for('login'))
         
-
-
-
-
-
-
 
 
 
@@ -124,6 +118,49 @@ def is_valid_password(password):
     return bool(re.match(password_pattern, password))
 
 
+
+
+@app.route('/edit_profile/<uuid>',methods=['GET', 'POST'])
+def edit_profile(uuid):
+    user = session.get('user')
+    if request.method == 'POST':
+        name = request.form.get('name')
+        email = request.form.get('email')
+        dob = request.form.get('dob')
+        address = request.form.get('address')
+        mobile_no = request.form.get('mobile_no')
+        if not is_valid_name(name):
+            flash('Please enter a valid name.', 'error')
+        elif not is_valid_email(email):
+            flash('Please enter a valid email address.', 'error')
+        elif user['uuid'] != uuid:
+            flash('Something went wronge.', 'error')
+        else:
+            update_profile_data = {
+                '$set': {
+                    'name': name,
+                    'email': email,
+                    'dob':dob,
+                    'address':address,
+                    'mobile_no':mobile_no
+                }
+            }
+            users.update_one({'uuid': uuid}, update_profile_data)
+            flash('profile data changed successfully', 'success')
+            return redirect(url_for('my_profile'))
+        return redirect(url_for('my_profile'))
+    else:
+        if user:
+            id = user['uuid']
+            if id == uuid:
+                profile_data = users.find_one({'uuid': id})
+                print(profile_data)
+                return render_template('edit_profile.html',profile_data=profile_data,user=user)
+            else:
+                return redirect(url_for('my_profile'))
+        return redirect(url_for('login'))
+
+
 @app.route('/login',methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -139,7 +176,7 @@ def login():
             #finding user with that email
             user = users.find_one({'email': email})
             if user and check_password_hash(user['password'], password):
-                session['user'] = {'id': str(user['_id']), 'name': user['name'], 'email': user['email']}
+                session['user'] = {'uuid': user['uuid'], 'name': user['name'], 'email': user['email']}
                 # flash('Login successful!', 'success')
                 return redirect(url_for('home'))
             else:
