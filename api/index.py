@@ -148,7 +148,7 @@ def edit_profile(uuid):
             users.update_one({'uuid': uuid}, update_profile_data)
             flash('profile data changed successfully', 'success')
             return redirect(url_for('my_profile'))
-        return redirect(url_for('my_profile'))
+        return redirect(url_for('edit_profile',uuid=uuid))
     else:
         if user:
             id = user['uuid']
