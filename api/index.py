@@ -58,6 +58,18 @@ def home():
             return redirect(url_for('login'))
         
 
+        
+@app.route('/my_reports')
+def my_reports():
+    user = session.get('user')
+
+    if user:
+        return render_template('my_report.html', user=user)
+    else:
+        flash('You must be logged in to access this page.', 'error')
+        return redirect(url_for('login'))
+
+
 @app.route('/diabetes')
 def diabetes():
     return render_template('diabetes.html')
@@ -67,9 +79,6 @@ def heart_diseases():
     return render_template('heart_diseases.html')
 
     
-@app.route('/brain_tumor')
-def brain_tumor():
-    return render_template('brain_tumor.html')
 
     
 @app.route('/logout')
