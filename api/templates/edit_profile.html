@@ -1,0 +1,76 @@
+{% extends 'layouts/base.html' %}
+{% block title %}
+    <title>Diabetes Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    {% endblock title %}
+{% block content %}
+
+    
+<main class="main">
+    <div class="main_wrapper">
+
+        <div class="profile_card">
+            <div class="box" style="--cover_img:url('https://img.freepik.com/free-photo/glowing-lines-human-heart-3d-shape-dark-background-generative-ai_191095-1435.jpg'); ">                
+                <div class="circle">
+                    <img src="{{ url_for('static', filename='img/avatar.png') }}" alt="profile image">
+                    <a href="" title="Change Profile Picture" class="profile_pic_btn">
+                        <i class='bx bx-edit'></i>
+                    </a>
+                </div>
+                
+            </div>
+            <div class="box">
+                <a href="/my_profile" class="edit_profile">View profile</a>
+                
+                <form action="" method="post">
+                    <div class="form_header">
+                        <h1 class="profile_title">Edit Profile</h1>
+                    </div>
+                    <div class="form_body">
+                        
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            <div class="alert_box">
+                {% for category,message in messages %}
+                <div class="alert alert-{{category}}">{{ message }}</div>
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% endwith %}
+                    <div class="form_group">
+                        <label for="uuid">UUID</label>
+                        <input type="text" class="input_box" name="uuid" readonly value="{{ profile_data.uuid | default('N/A') }}" placeholder="Enter UUID">
+                    </div>
+                    <div class="form_group">
+                        <label for="name">Name</label>
+                        <input type="text" class="input_box" name="name" value="{{ profile_data.name | default('N/A') }}" placeholder="Enter name">
+                    </div>
+                    <div class="form_group">
+                        <label for="email">Email</label>
+                        <input type="email" class="input_box" name="email" value="{{ profile_data.email | default('N/A') }}" placeholder="Enter email">
+                    </div>
+                    <div class="form_group">
+                        <label for="dob">DOB</label>
+                        <input type="date" class="input_box" name="dob" value="{{ profile_data.dob | default('01/01/2000') }}" placeholder="Enter DOB">
+                    </div>
+                    <div class="form_group">
+                        <label for="address">Address</label>
+                        <input type="text" class="input_box" name="address" value="{{ profile_data.address | default('N/A') }}" placeholder="Enter address">
+                    </div>                     
+                    <div class="form_group">
+                        <label for="mobile_no">Mobile No</label>
+                        <input type="text" class="input_box" name="mobile_no" value="{{ profile_data.mobile_no | default('N/A') }}" placeholder="Enter Mobile No">
+                    </div>
+                </div>
+                    <div class="form_footer">   
+                            <input type="reset" class="btn btn-outline" value="cancle">
+                            <input type="submit" class="btn" value="submit">                        
+                    </div>
+                </form>
+            
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock content %}
