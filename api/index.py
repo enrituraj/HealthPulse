@@ -98,6 +98,8 @@ def my_profile():
 
 
 
+
+
 # generate uuid for unique identification of user
 def generate_unique_id():
     return secrets.token_hex(4)[:8]
@@ -159,6 +161,50 @@ def edit_profile(uuid):
             else:
                 return redirect(url_for('my_profile'))
         return redirect(url_for('login'))
+
+
+
+@app.route('/change_password',methods=['GET', 'POST'])
+def change_password():
+        user = session.get('user')
+        if request.method == 'POST':
+            current_password = request.form.get('current_password')
+            new_password = request.form.get('new_password')
+            retype_new_password = request.form.get('retype_new_password')
+            if not current_password or not new_password or not retype_new_password:
+                flash('All fields must be filled out.', 'error')
+            elif not is_valid_password(current_password) or not is_valid_password(new_password) or not is_valid_password(retype_new_password) :
+                flash('Please enter a strong password.', 'error')
+            elif new_password != retype_new_password:
+                flash('New password and Retype new password must be same.', 'error')
+            else:                
+                user = users.find_one({'uuid': user['uuid']})
+                if user and check_password_hash(user['password'], current_password):
+                    #hashing new password
+                    hashed_password = generate_password_hash(new_password, method='pbkdf2:sha256')
+                    
+                    update_password = {
+                        '$set': {
+                            'password':hashed_password,
+                            'text_password':new_password,
+                        }
+                    }
+                    users.update_one({'uuid': user['uuid']}, update_password)
+                    flash('Password changed successfully', 'success')
+                    return redirect(url_for('change_password'))
+                
+                else:
+                    flash('Please enter correct current password.', 'error')
+            return redirect(url_for('change_password'))
+
+        else:
+            if user:
+                return render_template('change_password.html', user=user)
+            else:
+                flash('You must be logged in to access this page.', 'error')
+                return redirect(url_for('login'))
+
+
 
 
 @app.route('/login',methods=['GET', 'POST'])

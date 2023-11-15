@@ -243,9 +243,18 @@ th {
     outline: none;
     padding: 12px 20px;
     width: 100%;
+    margin-bottom: 0 !important;
     border: 1.5px solid #c3c3c4;
 }
+.form_title{
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #7a7a7a;
+}
+.form_title span{
+    color: #ff574d;
 
+}
 
 @media (max-width:880px) {
     .main {
@@ -255,6 +264,9 @@ th {
 
 @media (max-width:580px) {
 
+    .form_title{
+        font-size: 18px;
+    }
     .box:nth-child(1) {
         height: 200px;
         border-bottom-right-radius: 0px;
