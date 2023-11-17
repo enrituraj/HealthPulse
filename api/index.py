@@ -329,6 +329,10 @@ def register():
 def admin():
     return render_template('admin/index.html')
 
+@app.route('/admin2', methods=['GET', 'POST'])
+def admin2():
+    return render_template('admin/dashboard.html')
+
 @app.route('/admin1', methods=['GET', 'POST'])
 def admin1():
     return 'welcome admin1'

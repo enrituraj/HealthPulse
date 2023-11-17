@@ -1,0 +1,188 @@
+{% extends 'layouts/base_admin1.html' %}
+{% block title %}
+    <title>admin | HealthPulse</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+{% endblock title %}
+{% block content %}
+
+<main class="main">
+    <aside>
+        <nav class="sidebar">
+            <ul class="sidebar_menu">
+                <li>
+                    <a href="" class="sidebar_link">
+                        <span class="link_icon"><i class='bx bxs-dashboard'></i></span>
+                        <span class="link_name">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="sidebar_link">
+                        <span class="link_icon">
+                            <i class='bx bxs-user-detail'></i>
+                        </span>
+                        <span class="link_name">user Detail</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="sidebar_link">
+                        <span class="link_icon">
+                            <i class='bx bxs-report'></i>
+                        </span>
+                        <span class="link_name">All Reports</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="sidebar_link">
+                        <span class="link_icon">
+                            <i class='bx bxs-cog'></i>
+                        </span>
+                        <span class="link_name">Settings</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="sidebar_link">
+                        <span class="link_icon">
+                            <i class='bx bx-analyse'></i>
+                        </span>
+                        <span class="link_name">Analyse</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="sidebar_link">
+                        <span class="link_icon">
+                            <i class='bx bx-log-out bx-rotate-180' ></i>
+                        </span>
+                        <span class="link_name">Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+    <div class="main_wrapper">
+
+        <div class="card1">
+        <h1>admin Dashboard </h1>
+
+        <div class="alert alert-error">
+            The web page is under maintainance.
+            <br>
+            thanks for visiting.
+        </div>
+        
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">card title</h3>
+            </div>
+            <div class="card-body">
+                <h1>inside the body</h1>
+            </div>
+            <div class="card-footer">
+                <button class="btn">submit</button>
+            </div>
+        </div>
+
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">User Details</h3>
+            </div>
+            <div class="card-body">
+                <table class="profile_table">
+                    <thead>
+                        <tr>
+                            <th>S.no</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>01</td>
+                        <td>John</td>
+                        <td>john@gmail.com</td>
+                        <td><button class="btn">ok</button></td>
+                    </tr>
+                    <tbody>
+                    <tr>
+                        <td>01</td>
+                        <td>John</td>
+                        <td>john@gmail.com</td>
+                        <td><button class="btn">ok</button></td>
+                    </tr>
+                    <tbody>
+                    <tr>
+                        <td>01</td>
+                        <td>John</td>
+                        <td>john@gmail.com</td>
+                        <td><button class="btn">ok</button></td>
+                    </tr>
+                    <tbody>
+                    <tr>
+                        <td>01</td>
+                        <td>John</td>
+                        <td>john@gmail.com</td>
+                        <td><button class="btn">ok</button></td>
+                    </tr>
+                    <tbody>
+                    <tr>
+                        <td>01</td>
+                        <td>John</td>
+                        <td>john@gmail.com</td>
+                        <td><button class="btn">ok</button></td>
+                    </tr>
+                    <tbody>
+                    <tr>
+                        <td>01</td>
+                        <td>John</td>
+                        <td>john@gmail.com</td>
+                        <td><button class="btn">ok</button></td>
+                    </tr>
+                    <tbody>
+                    <tr>
+                        <td>01</td>
+                        <td>John</td>
+                        <td>john@gmail.com</td>
+                        <td><button class="btn">ok</button></td>
+                    </tr>
+                    <tbody>
+                    <tr>
+                        <td>01</td>
+                        <td>John</td>
+                        <td>john@gmail.com</td>
+                        <td><button class="btn">ok</button></td>
+                    </tr>
+                    <tbody>
+                    <tr>
+                        <td>01</td>
+                        <td>John</td>
+                        <td>john@gmail.com</td>
+                        <td><button class="btn">ok</button></td>
+                    </tr>
+                    <tbody>
+                    <tr>
+                        <td>01</td>
+                        <td>John</td>
+                        <td>john@gmail.com</td>
+                        <td><button class="btn">ok</button></td>
+                    </tr>
+                    <tbody>
+                    <tr>
+                        <td>01</td>
+                        <td>John</td>
+                        <td>john@gmail.com</td>
+                        <td><button class="btn">ok</button></td>
+                    </tr>
+                </tbody></table>
+            </div>
+        </div>
+
+
+        </div>
+    </div>
+</main>
+
+
+
+{% endblock content %}
