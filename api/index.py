@@ -159,7 +159,7 @@ def upload(uuid):
         )
 
         flash(f"File '{file.filename}' uploaded successfully!", 'success')
-        return redirect(url_for('upload_file'))
+        return redirect(url_for('my_profile'))
     else:
         flash('No file provided.', 'error')
         return redirect(url_for('upload_file'))
