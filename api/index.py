@@ -107,11 +107,6 @@ def my_profile():
 
         # flash('You must be logged in to access this page.', 'error')
         # return redirect(url_for('login'))
-        
-
-
-
-
 
 # generate uuid for unique identification of user
 def generate_unique_id():
@@ -327,6 +322,25 @@ def register():
                 flash('Signup successful! Please login.', 'success')
                 return redirect(url_for('login'))
     return render_template('register.html')
+
+
+
+@app.route('/admin', methods=['GET', 'POST'])
+def admin():
+    return render_template('admin/index.html')
+
+@app.route('/admin1', methods=['GET', 'POST'])
+def admin1():
+    return 'welcome admin1'
+
+
+
+
+
+
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
