@@ -12,8 +12,31 @@
         <div class="profile_card">
             <div class="box" style="--cover_img:url('https://img.freepik.com/free-photo/glowing-lines-human-heart-3d-shape-dark-background-generative-ai_191095-1435.jpg'); ">                
                 <div class="circle">
-                    <img src="{{ url_for('static', filename='img/avatar.png') }}" alt="profile image">
-                    <a href="" title="Change Profile Picture" class="profile_pic_btn">
+                    {% if profile_data.image_files and profile_data.image_files|length > 0 %}
+                        {% set first_image = profile_data.image_files[0] %}
+                        <div class="loader">                     
+                        </div>                        
+                        <img class="profile-image" id="userImage" src="" alt="User Image">
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                // Show loader when the page starts loading
+                                document.querySelector('.loader').style.display = 'block';                     
+                                // Create an Image object to preload the user image
+                                var userImage = new Image();
+                                userImage.src = "{{ url_for('fetch', file_id=first_image.file_id) }}";                    
+                                // Once the user image is loaded, hide the loader and show the image
+                                userImage.onload = function() {
+                                    document.querySelector('.loader').style.display = 'none';
+                                    document.querySelector('.profile-image').style.display = 'block';
+                                    document.getElementById('userImage').src = userImage.src;
+                                };
+                            });
+                        </script>
+                    {% else %}
+                        <img src="{{ url_for('static', filename='img/avatar.png') }}" alt="profile image">
+                    {% endif %}
+                    
+                    <a href="/upload_file" title="Change Profile Picture" class="profile_pic_btn">
                         <i class='bx bx-edit'></i>
                     </a>
                 </div>
@@ -75,7 +98,19 @@
         <h2>dob, {{ 'N/A' if profile_data['dob'] is none else profile_data['dob'] }}</h2> -->
 
 
-    {% endif %}
+        <!-- {% if profile_data.image_files and profile_data.image_files|length > 0 %}
+            {% set first_image = profile_data.image_files[0] %}
+            <img src="{{ url_for('fetch', file_id=first_image.file_id) }}" alt="User Image">
+        {% else %}
+            <p>No profile image available.</p>
+        {% endif %}
+    {% endif %} -->
+
+
+    <!-- upload model code -->
+
+
+    <!-- <svg viewBox="0 0 342 368" fill="none" xmlns="http://www.w3.org/2000/svg" class="leafygreen-ui-1cgwyec" aria-hidden="true" data-testid="svg-blob"><path opacity="0.6" d="M474 92.9761L474 257.458C474 318.515 420.538 368 354.575 368C289.269 368 236.383 318.934 236.506 258.523L236.63 201.882C236.671 171.886 210.434 147.562 178.069 147.562L176.012 147.562C143.648 147.562 117.451 123.277 117.451 93.357L117.451 92.291C117.451 62.2953 91.1317 38.0095 58.7256 38.0857C26.3196 38.1618 -4.40929e-07 13.876 -3.06323e-06 -16.1197L-3.19302e-06 -17.6043C-5.80867e-06 -47.5239 26.1962 -71.7716 58.52 -71.8097L296.589 -72C328.954 -72.038 355.192 -47.7522 355.192 -17.7946L355.192 -15.4346C355.192 14.5231 381.429 38.7708 413.753 38.7708L415.48 38.7708C447.763 38.7708 474 63.0185 474 92.9761Z" fill="currentColor"></path></svg> -->
 
     </div>
 </main>

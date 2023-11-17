@@ -1,0 +1,60 @@
+{% extends 'layouts/base.html' %}
+{% block title %}
+    <title>Dashboard | HealthPulse</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}">
+
+{% endblock title %}
+{% block content %}
+<main class="main">
+    <div class="main_wrapper">
+        <div class="card">
+        {% if user %}
+            
+        <div class="form_box form_custom">
+
+            <h2 class="form_title">Change <span>Picture</span> </h2>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            <div class="alert_box">
+                {% for category,message in messages %}
+                <div class="alert alert-{{category}}">{{ message }}</div>
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% endwith %}
+
+            <form action="/upload/{{ user.uuid }}" method="POST" enctype="multipart/form-data">
+                
+                
+                
+                <div class="form_group">
+                    <label for="file">Choose a file:</label>
+                    <input type="file" class="input_box" name="file" id="file" >
+                </div>
+
+                <input type="submit" class="btn-form_submit" value="Upload">
+            </form>
+
+            
+            {% if user.image_files and user.image_files|length > 0 %}
+                {% set first_image = user.image_files[0] %}
+                <img src="{{ url_for('fetch', file_id=first_image.file_id) }}" alt="User Image">
+            {% else %}
+                <div class="alert alert-error"> 
+                    please make sure don't upload more than one profile ppicture.
+                    <li>system under maintainance.</li>
+                </div>
+            {% endif %}
+        </div>
+
+        {% endif %}
+
+        </div>
+    </div>
+</main>
+
+
+
+{% endblock content %}
