@@ -1,4 +1,4 @@
-from flask import Flask,render_template,redirect,url_for,request,flash,session
+from flask import Flask,render_template,redirect,url_for,request,flash,session,send_file
 
 # Form Validation
 import secrets
@@ -10,6 +10,10 @@ from datetime import datetime
 import pymongo
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
+# for image upload using gridfs
+from bson import ObjectId
+from gridfs import GridFS
+from io import BytesIO
 #enviroment variable setup
 from dotenv import load_dotenv, find_dotenv
 import os
@@ -37,9 +41,9 @@ except Exception as e:
     print(e)
 #database initialization
 db = client.healthpulse
-# use a collection named "recipes"
+# use a collection named "users"
 users = db["user"]
-
+fs = GridFS(db, collection='images')
 
 
 
@@ -129,6 +133,41 @@ def is_valid_password(password):
     return bool(re.match(password_pattern, password))
 
 
+@app.route('/upload_file')
+def upload_file():
+    user = session.get('user')
+
+    if user:
+        return render_template('upload_file.html', user=user)
+    else:
+        flash('You must be logged in to access this page.', 'error')
+        return redirect(url_for('login'))
+
+
+@app.route('/upload/<uuid>', methods=['POST'])
+def upload(uuid):
+    if 'file' in request.files:
+        file = request.files['file']
+
+        # Save the file to MongoDB using GridFS
+        file_id = fs.put(file, filename=file.filename)
+
+        # Store file information in 'users' collection
+        users.update_one(
+            {'uuid': uuid},
+            {'$push': {'image_files': {'file_id': file_id, 'filename': file.filename}}}
+        )
+
+        flash(f"File '{file.filename}' uploaded successfully!", 'success')
+        return redirect(url_for('upload_file'))
+    else:
+        flash('No file provided.', 'error')
+        return redirect(url_for('upload_file'))
+
+@app.route('/fetch/<file_id>')
+def fetch(file_id):
+    file_data = fs.get(ObjectId(file_id))
+    return send_file(BytesIO(file_data.read()), mimetype=file_data.content_type, as_attachment=True, download_name=file_data.filename)
 
 
 @app.route('/edit_profile/<uuid>',methods=['GET', 'POST'])
