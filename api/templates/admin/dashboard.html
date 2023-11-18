@@ -61,7 +61,204 @@
     <div class="main_wrapper">
 
         <div class="card1">
-        <h1>admin Dashboard </h1>
+        <h1>Admin Dashboard </h1>
+
+
+        <div class="flex">
+            <div class="col-3">
+                <div class="widget danger">
+                    
+                    <div class="widget_body">
+                        <div class="icon">
+                            <i class='bx bxs-user'></i>
+                        </div>
+                        <div class="widget_text">
+                            <span class="no">42</span>
+                            <span class="desc">User</span>
+                        </div>
+                    </div>
+                    <div class="widget_footer">
+                        <a href="">
+                            <p>view more</p>
+                            <i class='bx bx-right-arrow-alt'></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="widget info">
+                    
+                    <div class="widget_body">
+                        <div class="icon">
+                            <i class='bx bxs-report'></i></div>
+                        <div class="widget_text">
+                            <span class="no">80</span>
+                            <span class="desc">reports</span>
+                        </div>
+                    </div>
+                    <div class="widget_footer">
+                        <a href="">
+                            <p>view more</p>
+                            <i class='bx bx-right-arrow-alt'></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="widget warning">
+                    
+                    <div class="widget_body">
+                        <div class="icon"><i class='bx bxs-time'></i>
+                        </div>
+                        <div class="widget_text">
+                            <span class="no">14</span>
+                            <span class="desc">Last login</span>
+                        </div>
+                    </div>
+                    <div class="widget_footer">
+                        <a href="">
+                            <p>view more</p>
+                            <i class='bx bx-right-arrow-alt'></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="widget dark">
+                    
+                    <div class="widget_body">
+                        <div class="icon"><i class='bx bx-message-dots'></i>
+                        </div>
+                        <div class="widget_text">
+                            <span class="no">07</span>
+                            <span class="desc">New Messages</span>
+                        </div>
+                    </div>
+                    <div class="widget_footer">
+                        <a href="">
+                            <p>view more</p>
+                            <i class='bx bx-right-arrow-alt'></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="flex">
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-body">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-body">
+                        <canvas id="myChart1"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="flex">
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            Active User
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        
+                <table class="profile_table">
+                    <thead>
+                        <tr>
+                            <th>S.no</th>
+                            <th>Name</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>01</td>
+                            <td>demo@ggmial.com</td>
+                        </tr>
+                        <tr>
+                            <td>02</td>
+                            <td>demo</td>
+                        </tr>
+                        <tr>
+                            <td>03</td>
+                            <td>demo</td>
+                        </tr>
+                        <tr>
+                            <td>04</td>
+                            <td>demo</td>
+                        </tr>
+                        <tr>
+                            <td>05</td>
+                            <td>demo</td>
+                        </tr>
+                    </tbody>
+                    </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            Current User's
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        
+                <table class="profile_table">
+                    <thead>
+                        <tr>
+                            <th>S.no</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>01</td>
+                            <td>demo</td>
+                            <td>demo@ggmial.com</td>
+                        </tr>
+                        <tr>
+                            <td>02</td>
+                            <td>demo</td>
+                            <td>demo@ggmial.com</td>
+                        </tr>
+                        <tr>
+                            <td>03</td>
+                            <td>demo</td>
+                            <td>demo@ggmial.com</td>
+                        </tr>
+                        <tr>
+                            <td>04</td>
+                            <td>demo</td>
+                            <td>demo@ggmial.com</td>
+                        </tr>
+                        <tr>
+                            <td>05</td>
+                            <td>demo</td>
+                            <td>demo@ggmial.com</td>
+                        </tr>
+                    </tbody>
+                    </table>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="alert alert-error">
             The web page is under maintainance.
@@ -88,7 +285,7 @@
                 <h3 class="card-title">User Details</h3>
             </div>
             <div class="card-body">
-                <table class="profile_table">
+                <table class="profile_table" id="myTable">
                     <thead>
                         <tr>
                             <th>S.no</th>
@@ -102,77 +299,244 @@
                         <td>01</td>
                         <td>John</td>
                         <td>john@gmail.com</td>
-                        <td><button class="btn">ok</button></td>
+                        <td>
+
+                            <div class="dropdown" data-dropdown="">
+                                <a class="dropdown_btn user__data" data-dropdown-button="">
+                                    <i class='bx bx-dots-vertical-rounded  menu_circle'></i>
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a href="" class="dropdown_item">
+                                        <i class='bx bx-show-alt'></i> View User
+                                    </a>
+                                    <a href="" class="dropdown_item">
+                                        <i class='bx bxs-edit'></i> Edit User
+                                    </a>
+                                    <a href="" class="dropdown_item">
+                                        <i class='bx bx-lock-alt'></i> Change Password
+                                    </a>
+                                    <a href="" class="dropdown_item logout">
+                                        <i class='bx bx-trash'></i> Delete user</a>
+                                </div>
+                            </div>
+
+                        </td>
                     </tr>
-                    <tbody>
                     <tr>
                         <td>01</td>
                         <td>John</td>
                         <td>john@gmail.com</td>
-                        <td><button class="btn">ok</button></td>
+                        <td>
+
+                            <div class="dropdown" data-dropdown="">
+                                <a class="dropdown_btn user__data" data-dropdown-button="">
+                                    <i class='bx bx-dots-vertical-rounded  menu_circle'></i>
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a href="" class="dropdown_item">
+                                        <i class='bx bx-show-alt'></i> View User
+                                    </a>
+                                    <a href="" class="dropdown_item">
+                                        <i class='bx bxs-edit'></i> Edit User
+                                    </a>
+                                    <a href="" class="dropdown_item">
+                                        <i class='bx bx-lock-alt'></i> Change Password
+                                    </a>
+                                    <a href="" class="dropdown_item logout">
+                                        <i class='bx bx-trash'></i> Delete user</a>
+                                </div>
+                            </div>
+
+                        </td>
                     </tr>
-                    <tbody>
                     <tr>
                         <td>01</td>
                         <td>John</td>
                         <td>john@gmail.com</td>
-                        <td><button class="btn">ok</button></td>
+                        <td>
+
+                            <div class="dropdown" data-dropdown="">
+                                <a class="dropdown_btn user__data" data-dropdown-button="">
+                                    <i class='bx bx-dots-vertical-rounded  menu_circle'></i>
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a href="" class="dropdown_item">
+                                        <i class='bx bx-show-alt'></i> View User
+                                    </a>
+                                    <a href="" class="dropdown_item">
+                                        <i class='bx bxs-edit'></i> Edit User
+                                    </a>
+                                    <a href="" class="dropdown_item">
+                                        <i class='bx bx-lock-alt'></i> Change Password
+                                    </a>
+                                    <a href="" class="dropdown_item logout">
+                                        <i class='bx bx-trash'></i> Delete user</a>
+                                </div>
+                            </div>
+
+                        </td>
                     </tr>
-                    <tbody>
                     <tr>
                         <td>01</td>
                         <td>John</td>
                         <td>john@gmail.com</td>
-                        <td><button class="btn">ok</button></td>
+                        <td>
+
+                            <div class="dropdown" data-dropdown="">
+                                <a class="dropdown_btn user__data" data-dropdown-button="">
+                                    <i class='bx bx-dots-vertical-rounded  menu_circle'></i>
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a href="" class="dropdown_item">
+                                        <i class='bx bx-show-alt'></i> View User
+                                    </a>
+                                    <a href="" class="dropdown_item">
+                                        <i class='bx bxs-edit'></i> Edit User
+                                    </a>
+                                    <a href="" class="dropdown_item">
+                                        <i class='bx bx-lock-alt'></i> Change Password
+                                    </a>
+                                    <a href="" class="dropdown_item logout">
+                                        <i class='bx bx-trash'></i> Delete user</a>
+                                </div>
+                            </div>
+
+                        </td>
                     </tr>
-                    <tbody>
                     <tr>
                         <td>01</td>
                         <td>John</td>
                         <td>john@gmail.com</td>
-                        <td><button class="btn">ok</button></td>
+                        <td>
+
+                            <div class="dropdown" data-dropdown="">
+                                <a class="dropdown_btn user__data" data-dropdown-button="">
+                                    <i class='bx bx-dots-vertical-rounded  menu_circle'></i>
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a href="" class="dropdown_item">
+                                        <i class='bx bx-show-alt'></i> View User
+                                    </a>
+                                    <a href="" class="dropdown_item">
+                                        <i class='bx bxs-edit'></i> Edit User
+                                    </a>
+                                    <a href="" class="dropdown_item">
+                                        <i class='bx bx-lock-alt'></i> Change Password
+                                    </a>
+                                    <a href="" class="dropdown_item logout">
+                                        <i class='bx bx-trash'></i> Delete user</a>
+                                </div>
+                            </div>
+
+                        </td>
                     </tr>
-                    <tbody>
                     <tr>
                         <td>01</td>
                         <td>John</td>
                         <td>john@gmail.com</td>
-                        <td><button class="btn">ok</button></td>
+                        <td>
+
+                            <div class="dropdown" data-dropdown="">
+                                <a class="dropdown_btn user__data" data-dropdown-button="">
+                                    <i class='bx bx-dots-vertical-rounded  menu_circle'></i>
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a href="" class="dropdown_item">
+                                        <i class='bx bx-show-alt'></i> View User
+                                    </a>
+                                    <a href="" class="dropdown_item">
+                                        <i class='bx bxs-edit'></i> Edit User
+                                    </a>
+                                    <a href="" class="dropdown_item">
+                                        <i class='bx bx-lock-alt'></i> Change Password
+                                    </a>
+                                    <a href="" class="dropdown_item logout">
+                                        <i class='bx bx-trash'></i> Delete user</a>
+                                </div>
+                            </div>
+
+                        </td>
                     </tr>
-                    <tbody>
                     <tr>
                         <td>01</td>
                         <td>John</td>
                         <td>john@gmail.com</td>
-                        <td><button class="btn">ok</button></td>
+                        <td>
+
+                            <div class="dropdown" data-dropdown="">
+                                <a class="dropdown_btn user__data" data-dropdown-button="">
+                                    <i class='bx bx-dots-vertical-rounded  menu_circle'></i>
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a href="" class="dropdown_item">
+                                        <i class='bx bx-show-alt'></i> View User
+                                    </a>
+                                    <a href="" class="dropdown_item">
+                                        <i class='bx bxs-edit'></i> Edit User
+                                    </a>
+                                    <a href="" class="dropdown_item">
+                                        <i class='bx bx-lock-alt'></i> Change Password
+                                    </a>
+                                    <a href="" class="dropdown_item logout">
+                                        <i class='bx bx-trash'></i> Delete user</a>
+                                </div>
+                            </div>
+
+                        </td>
                     </tr>
-                    <tbody>
                     <tr>
                         <td>01</td>
                         <td>John</td>
                         <td>john@gmail.com</td>
-                        <td><button class="btn">ok</button></td>
+                        <td>
+
+                            <div class="dropdown" data-dropdown="">
+                                <a class="dropdown_btn user__data" data-dropdown-button="">
+                                    <i class='bx bx-dots-vertical-rounded  menu_circle'></i>
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a href="" class="dropdown_item">
+                                        <i class='bx bx-show-alt'></i> View User
+                                    </a>
+                                    <a href="" class="dropdown_item">
+                                        <i class='bx bxs-edit'></i> Edit User
+                                    </a>
+                                    <a href="" class="dropdown_item">
+                                        <i class='bx bx-lock-alt'></i> Change Password
+                                    </a>
+                                    <a href="" class="dropdown_item logout">
+                                        <i class='bx bx-trash'></i> Delete user</a>
+                                </div>
+                            </div>
+
+                        </td>
                     </tr>
-                    <tbody>
                     <tr>
                         <td>01</td>
                         <td>John</td>
                         <td>john@gmail.com</td>
-                        <td><button class="btn">ok</button></td>
-                    </tr>
-                    <tbody>
-                    <tr>
-                        <td>01</td>
-                        <td>John</td>
-                        <td>john@gmail.com</td>
-                        <td><button class="btn">ok</button></td>
-                    </tr>
-                    <tbody>
-                    <tr>
-                        <td>01</td>
-                        <td>John</td>
-                        <td>john@gmail.com</td>
-                        <td><button class="btn">ok</button></td>
+                        <td>
+
+                            <div class="dropdown" data-dropdown="">
+                                <a class="dropdown_btn user__data" data-dropdown-button="">
+                                    <i class='bx bx-dots-vertical-rounded  menu_circle'></i>
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a href="" class="dropdown_item">
+                                        <i class='bx bx-show-alt'></i> View User
+                                    </a>
+                                    <a href="" class="dropdown_item">
+                                        <i class='bx bxs-edit'></i> Edit User
+                                    </a>
+                                    <a href="" class="dropdown_item">
+                                        <i class='bx bx-lock-alt'></i> Change Password
+                                    </a>
+                                    <a href="" class="dropdown_item logout">
+                                        <i class='bx bx-trash'></i> Delete user</a>
+                                </div>
+                            </div>
+
+                        </td>
                     </tr>
                 </tbody></table>
             </div>
@@ -182,7 +546,62 @@
         </div>
     </div>
 </main>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" type="text/javascript"></script>
+<script>
+    const dataTable = new simpleDatatables.DataTable("#myTable", {
+        searchable: true,
+        fixedHeight: true,
+    });
+</script>
 
 
+<script>
+    const ctx = document.getElementById('myChart');
+    const ctx1 = document.getElementById('myChart1');
+  
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+          label: '# of Votes',
+          data: [12, 19, 3, 5, 2, 3],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
 
+
+    const data = {
+  labels: [
+    'Red',
+    'Blue',
+    'Yellow'
+  ],
+  datasets: [{
+    label: 'My First Dataset',
+    data: [300, 50, 100],
+    backgroundColor: [
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)',
+      'rgb(255, 205, 86)'
+    ],
+    hoverOffset: 4
+  }]
+};
+const config = {
+  type: 'doughnut',
+  data: data,
+};
+new Chart(ctx1,config)
+
+  </script>
 {% endblock content %}
