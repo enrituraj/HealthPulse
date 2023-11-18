@@ -1,0 +1,70 @@
+{% extends 'layouts/base_admin.html' %}
+{% block title %}
+    <title>User Details | HealthPulse</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+{% endblock title %}
+{% block content %}
+
+
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">User Details</h3>
+    </div>
+    <div class="card-body">
+        <table class="profile_table" id="myTable">
+            <thead>
+                <tr>
+                    <th>S.no</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for user in user_data %}
+                
+            <tr>
+                <td>{{loop.index}}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>
+
+                    <div class="dropdown" data-dropdown="">
+                        <a class="dropdown_btn user__data" data-dropdown-button="">
+                            <i class='bx bx-dots-vertical-rounded  menu_circle'></i>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="" class="dropdown_item">
+                                <i class='bx bx-show-alt'></i> View User
+                            </a>
+                            <a href="" class="dropdown_item">
+                                <i class='bx bxs-edit'></i> Edit User
+                            </a>
+                            <a href="" class="dropdown_item">
+                                <i class='bx bx-lock-alt'></i> Change Password
+                            </a>
+                            <a href="" class="dropdown_item logout">
+                                <i class='bx bx-trash'></i> Delete user</a>
+                        </div>
+                    </div>
+
+                </td>
+            </tr>
+
+            {% endfor %}
+           
+        </tbody></table>
+    </div>
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" type="text/javascript"></script>
+<script>
+    const dataTable = new simpleDatatables.DataTable("#myTable", {
+        searchable: true,
+        fixedHeight: true,
+    });
+</script>
+{% endblock content %}

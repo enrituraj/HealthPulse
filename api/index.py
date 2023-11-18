@@ -265,9 +265,13 @@ def login():
             #finding user with that email
             user = users.find_one({'email': email})
             if user and check_password_hash(user['password'], password):
-                session['user'] = {'uuid': user['uuid'], 'name': user['name'], 'email': user['email']}
-                # flash('Login successful!', 'success')
-                return redirect(url_for('home'))
+                if user['role'] == 'admin':
+                    session['admin'] = {'uuid': user['uuid'], 'name': user['name'], 'email': user['email']}
+                    return redirect(url_for('admin_dashboard'))                    
+                else:
+                    session['user'] = {'uuid': user['uuid'], 'name': user['name'], 'email': user['email']}
+                    # flash('Login successful!', 'success')
+                    return redirect(url_for('home'))
             else:
                 flash('Invalid email or password. Please try again.', 'error')
     return render_template('login.html')
@@ -313,6 +317,7 @@ def register():
                     'uuid':unique_id,
                     'name': name,
                     'email': email,
+                    'role':'user',
                     'password':hashed_password,
                     'text_password':password, # removed before going to live
                     'created_At':current_time
@@ -325,17 +330,29 @@ def register():
 
 
 
-@app.route('/admin', methods=['GET', 'POST'])
-def admin():
-    return render_template('admin/index.html')
 
-@app.route('/admin2', methods=['GET', 'POST'])
-def admin2():
-    return render_template('admin/dashboard.html')
+@app.route('/admin/dashboard', methods=['GET', 'POST'])
+def admin_dashboard():
+    admin = session.get('admin')
+    if admin:
+        return render_template('admin/dashboard.html', admin=admin)
+    else:
+        flash('You must be logged in to access this page.', 'error')
+        return redirect(url_for('login'))
+    
+    
+@app.route('/admin/user_detail', methods=['GET', 'POST'])
+def user_detail():
+    admin = session.get('admin')
+    if admin:
+        user_data = list(users.find())        
+        return render_template('admin/user_detail.html', admin=admin,user_data= user_data)
+    else:
+        flash('You must be logged in to access this page.', 'error')
+        return redirect(url_for('login'))
+    
 
-@app.route('/admin1', methods=['GET', 'POST'])
-def admin1():
-    return 'welcome admin1'
+
 
 
 
