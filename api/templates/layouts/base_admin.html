@@ -25,11 +25,11 @@
                         
                     </a>
                 </div>
-                <ul class="main_menu" id="menu">                    
+                <!-- <ul class="main_menu" id="menu">                    
                     <li class="menu_li">
                         <a href="/login" class="menu_link lg-hidden">Login</a>
                     </li>
-                </ul>
+                </ul> -->
             </div>
     
             <div class="menu_right">
@@ -56,18 +56,20 @@
                 <!-- dropdown end -->
                 {% else %}            
                     <a href="/login" class="btn btn-login sm-hidden">Login</a>
+                    <button class="toggle lg-hidden only_sm" id="menu_toggle2">
+                        <i class="bx bx-menu"></i>
+                    </button>
                 {% endif %}
+            <div id="menu_toggle2" style="display: none;"></div>
+
     
-                <button class="toggle lg-hidden only_sm" id="menu_toggle2">
-                    <i class="bx bx-menu"></i>
-                </button>
             </div>
         </nav>
         </header>
         
         
 <main class="main">
-    <aside>
+    <aside id="menu">
         <nav class="sidebar">
             <ul class="sidebar_menu">
                 <li>
@@ -93,7 +95,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="" class="sidebar_link">
+                    <a href="{{ url_for('settings') }}" class="sidebar_link">
                         <span class="link_icon">
                             <i class='bx bxs-cog'></i>
                         </span>

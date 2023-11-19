@@ -1,0 +1,136 @@
+{% extends 'layouts/base_admin.html' %}
+{% block title %}
+    <title>Settings | HealthPulse</title>
+    <style>
+        /* this setting is only for this page 
+        we have to do it because if i am using 
+        data tag to pass value in css it get removed by 
+        simple-datatables. if you are not using simple-datatables 
+        then you can use this syantax 
+            <td data-cell="name">name</td>
+            content: attr(data-cell) ' :  ';
+
+        */
+
+        @media (max-width:768px){
+
+    .setting_table tr td:nth-child(1)::before{        
+        content: 'S.No :  ';
+    }
+    .setting_table tr td:nth-child(2)::before{
+        content: 'Route :  ';
+    }
+    .setting_table tr td:nth-child(3)::before{
+        content: 'Status :  ';
+    }
+    .setting_table tr td:nth-child(4)::before{
+        content: 'Action :  ';
+    }
+    .setting_table tr td:nth-child(4) form{
+        display: inline-block;
+        vertical-align: text-top;
+    }
+}
+    </style>
+{% endblock title %}
+{% block content %}
+
+
+
+<div class="card">
+    <div class="card-header item-2">
+        <h3 class="card-title">Route Settings</h3>
+        <a href="" class="btn">Add New Route</a>
+    </div>
+    <div class="card-body">
+        <table class="setting_table" id="myTable">
+            <thead>
+                <tr>
+                    <th>S.no</th>
+                    <th>Route Name</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for data in global_data %}
+                
+            <tr>
+                <td data-cell="S.No">{{loop.index}}</td>
+                <td data-cell="Route Name">{{ data.route_name }}</td>
+                <td data-cell="Status">
+                    {% if data.is_enabled %}
+                        <span class="warning badge">Active</span>
+                    {% else %}
+                        <span class="danger badge">Inactive</span>
+                    {% endif %}
+
+                    <!-- <button class="btn" onclick="toogleModel()">toogel model</button> -->
+                </td>
+                <td data-cell="Action">
+                    <form action="{{ url_for('enable_route', route_name=data.route_name) }}" method="post">
+                        <input type="checkbox" name="enableCheckbox" class="toogle_btn" id="{{data.route_name}}" {% if data.is_enabled %}checked{% endif %} onchange="CheckedToogle(`{{ data.route_name }}`)">
+                        <label for="{{data.route_name}}" class="switch"></label>
+                        <button name="submit" hidden id="btn_{{ data.route_name }}" type="submit">submit</button>
+                    </form>
+                </td>
+            </tr>
+
+            {% endfor %}
+           
+        </tbody></table>
+    </div>
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" type="text/javascript"></script>
+<script>
+    const dataTable = new simpleDatatables.DataTable("#myTable", {
+        searchable: true,
+        fixedHeight: true,
+    });
+</script>
+
+<div class="model-wrapper" id="model">
+    <div class="model">
+        <div class="model_icon">
+            <i class='bx bx-question-mark' ></i>
+        </div>
+        <p class="question">Are you Sure ?</p>
+        <div class="model_footer">
+            <button id="no" onclick="noChange()" class="btn danger">No</button>
+            <button id="yes" onclick="changeIt()" class="btn warning">Yes</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toogleModel(field_name){
+        document.querySelector('#model').classList.add('active');
+        document.getElementById('yes').setAttribute('data-field', field_name);
+        document.getElementById('no').setAttribute('data-field', field_name);
+    }
+
+    function noChange(){
+        let field_name = document.getElementById('no').getAttribute('data-field');
+        document.querySelector('#model').classList.remove('active');
+        document.getElementById(field_name).checked = false;
+    }
+
+    function changeIt(){
+        let field_name = document.getElementById('yes').getAttribute('data-field');
+        document.querySelector('#model').classList.remove('active');
+        
+        // alert(`${field_name} is going to change in few min`)
+        let btnId = `btn_${field_name}`;
+        console.log(btnId)
+        document.getElementById(btnId).click();
+    }
+
+    function CheckedToogle(field_name){
+        toogleModel(field_name);
+    }
+
+</script>
+{% endblock content %}

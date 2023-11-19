@@ -274,9 +274,11 @@ a {
         display: none !important;
     }
 }
-
 @media (max-width:425px) {
     .sm-hidden {
+        display: none;
+    }
+    .not_visible{
         display: none;
     }
 
@@ -286,7 +288,7 @@ a {
     }
 
     .only_lg {
-        display: none;
+        display: block;
     }
 
     .main_menu {

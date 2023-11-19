@@ -1,5 +1,5 @@
-from flask import Flask,render_template,redirect,url_for,request,flash,session,send_file
-
+from flask import Flask,render_template,redirect,url_for,request,flash,session,send_file,abort
+from functools import wraps
 # Form Validation
 import secrets
 import re
@@ -44,26 +44,69 @@ db = client.healthpulse
 # use a collection named "users"
 users = db["user"]
 fs = GridFS(db, collection='images')
+global_settings = db['global_settings']
+
+
+#decorators
+
+def login_required(route_function):
+    @wraps(route_function)
+    def decorated_function(*args, **kwargs):
+        user = session.get('user')        
+        if 'user' in session and user['role'] == 'user':
+            return route_function(*args, **kwargs)
+        else:
+            flash('You must be logged in to access this page.', 'error')
+            return redirect(url_for('login'))
+    return decorated_function
+
+def onlyAdmin(route_function):
+    @wraps(route_function)
+    def decorated_function(*args, **kwargs):
+        admin = session.get('admin')
+        if 'admin' in session and admin['role'] == 'admin':
+            return route_function(*args, **kwargs)
+        else:
+            return redirect(url_for('login'))
+    return decorated_function
+
+
+def route_enabled(route_name):
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            route_settings = global_settings.find_one({'route_name': route_name})
+
+            if route_settings and route_settings.get('is_enabled', False):
+                return func(*args, **kwargs)
+            else:
+                return redirect(url_for('error_404'))  # Forbidden, or redirect to a specific page if needed
+
+        return wrapper
+    return decorator
+
+
 
 
 
 #route setup
 
 
+@app.route('/error_404')
+def error_404():
+    return '404 error'
 
 @app.route('/')
+@login_required
 def home():
-        user = session.get('user')
-
-        if user:
-            return render_template('index.html', user=user)
-        else:
-            flash('You must be logged in to access this page.', 'error')
-            return redirect(url_for('login'))
+    user = session.get('user')
+    if user:
+        return render_template('index.html', user=user)
         
 
         
 @app.route('/my_reports')
+@login_required
 def my_reports():
     user = session.get('user')
 
@@ -87,7 +130,11 @@ def heart_diseases():
     
 @app.route('/logout')
 def logout():
-    session.pop('user', None)
+    user = session.get('user')
+    if user:
+        session.pop('user', None)
+    else:
+        session.pop('admin', None)
     flash('Logout successful!', 'success')
     return redirect(url_for('login'))
 
@@ -95,6 +142,8 @@ def logout():
 # after login
 
 @app.route('/my_profile')
+@login_required
+@route_enabled('my_profile')
 def my_profile():
     user = session.get('user')
     if user:
@@ -129,6 +178,7 @@ def is_valid_password(password):
 
 
 @app.route('/upload_file')
+@login_required
 def upload_file():
     user = session.get('user')
 
@@ -140,6 +190,7 @@ def upload_file():
 
 
 @app.route('/upload/<uuid>', methods=['POST'])
+@login_required
 def upload(uuid):
     if 'file' in request.files:
         file = request.files['file']
@@ -160,12 +211,14 @@ def upload(uuid):
         return redirect(url_for('upload_file'))
 
 @app.route('/fetch/<file_id>')
+@login_required
 def fetch(file_id):
     file_data = fs.get(ObjectId(file_id))
     return send_file(BytesIO(file_data.read()), mimetype=file_data.content_type, as_attachment=True, download_name=file_data.filename)
 
 
 @app.route('/edit_profile/<uuid>',methods=['GET', 'POST'])
+@login_required
 def edit_profile(uuid):
     user = session.get('user')
     if request.method == 'POST':
@@ -208,6 +261,7 @@ def edit_profile(uuid):
 
 
 @app.route('/change_password',methods=['GET', 'POST'])
+@login_required
 def change_password():
         user = session.get('user')
         if request.method == 'POST':
@@ -248,9 +302,8 @@ def change_password():
                 return redirect(url_for('login'))
 
 
-
-
 @app.route('/login',methods=['GET', 'POST'])
+@route_enabled('login')
 def login():
     if request.method == 'POST':
         email = request.form.get('email')
@@ -266,10 +319,10 @@ def login():
             user = users.find_one({'email': email})
             if user and check_password_hash(user['password'], password):
                 if user['role'] == 'admin':
-                    session['admin'] = {'uuid': user['uuid'], 'name': user['name'], 'email': user['email']}
+                    session['admin'] = {'uuid': user['uuid'], 'name': user['name'], 'email': user['email'],'role':user['role']}
                     return redirect(url_for('admin_dashboard'))                    
                 else:
-                    session['user'] = {'uuid': user['uuid'], 'name': user['name'], 'email': user['email']}
+                    session['user'] = {'uuid': user['uuid'], 'name': user['name'], 'email': user['email'],'role':user['role']}
                     # flash('Login successful!', 'success')
                     return redirect(url_for('home'))
             else:
@@ -279,6 +332,7 @@ def login():
 
 
 @app.route('/register', methods=['GET', 'POST'])
+@route_enabled('register')
 def register():
     if request.method == 'POST':
         name = request.form.get('name')
@@ -332,6 +386,7 @@ def register():
 
 
 @app.route('/admin/dashboard', methods=['GET', 'POST'])
+@onlyAdmin
 def admin_dashboard():
     admin = session.get('admin')
     if admin:
@@ -342,6 +397,7 @@ def admin_dashboard():
     
     
 @app.route('/admin/user_detail', methods=['GET', 'POST'])
+@onlyAdmin
 def user_detail():
     admin = session.get('admin')
     if admin:
@@ -352,7 +408,33 @@ def user_detail():
         return redirect(url_for('login'))
     
 
+@app.route('/admin/settings', methods=['GET', 'POST'])
+@onlyAdmin
+def settings():
+    admin = session.get('admin')
+    if admin:
+        global_data = list(global_settings.find())        
+        return render_template('admin/settings.html', admin=admin,global_data= global_data)
+    else:
+        flash('You must be logged in to access this page.', 'error')
+        return redirect(url_for('login'))
+    
 
+@app.route('/enable_route/<route_name>', methods=['POST'])
+def enable_route(route_name):
+    enableCheckbox = request.form.get('enableCheckbox')
+    checboxValue = False
+    if enableCheckbox:
+        checboxValue = True
+    
+    update_route = {
+        '$set': {
+            'is_enabled': checboxValue,
+        }
+    }
+    global_settings.update_one({'route_name': route_name}, update_route)
+    flash(f'{route_name} changed successfully', 'success')
+    return redirect(url_for('settings'))
 
 
 
