@@ -1,18 +1,49 @@
 {% extends 'layouts/base_admin.html' %}
 {% block title %}
     <title>User Details | HealthPulse</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+    <style>
+        /* this setting is only for this page 
+        we have to do it because if i am using 
+        data tag to pass value in css it get removed by 
+        simple-datatables. if you are not using simple-datatables 
+        then you can use this syantax 
+            <td data-cell="name">name</td>
+            content: attr(data-cell) ' :  ';
+
+        */
+
+
+        @media (max-width:768px){
+    .users_table tr td:nth-child(1)::before{        
+        content: 'S.No :  ';
+    }
+    .users_table tr td:nth-child(2)::before{
+        content: 'Name :  ';
+    }
+    .users_table tr td:nth-child(3)::before{
+        content: 'Email :  ';
+    }
+    .users_table tr td:nth-child(4)::before{
+        content: 'Action :  ';
+    }
+    .users_table tr td:nth-child(4) form{
+        display: inline-block;
+        vertical-align: text-top;
+    }
+}
+    </style>
 {% endblock title %}
 {% block content %}
 
 
 
 <div class="card">
-    <div class="card-header">
+    <div class="card-header item-2">
         <h3 class="card-title">User Details</h3>
+        <a href="" class="btn">Add New User</a>
     </div>
     <div class="card-body">
-        <table class="profile_table" id="myTable">
+        <table class="users_table" id="myTable">
             <thead>
                 <tr>
                     <th>S.no</th>

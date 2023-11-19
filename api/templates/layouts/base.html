@@ -37,7 +37,7 @@
         
     <nav class="navbar">
         <div class="menu_left">
-            <button class="toggle lg-hidden only_lg" id="menu_toggle">
+            <button class="toggle lg-hidden {% if not user %}not_visible{% endif %}" id="menu_toggle">
                 <i class="bx bx-menu"></i>
             </button>
             <div class="logo">
@@ -92,11 +92,12 @@
             {% else %}            
                 <a href="/login" class="btn btn-login sm-hidden">Login</a>
                 <a href="/register" class="btn btn-register sm-hidden">Signup</a>
+                
+                <button class="toggle lg-hidden only_sm" id="menu_toggle2">
+                    <i class="bx bx-menu"></i>
+                </button>
             {% endif %}
-
-            <button class="toggle lg-hidden only_sm" id="menu_toggle2">
-                <i class="bx bx-menu"></i>
-            </button>
+            <div id="menu_toggle2" style="display: none;"></div>
         </div>
     </nav>
     </header>
