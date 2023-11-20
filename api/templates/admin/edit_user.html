@@ -1,0 +1,62 @@
+{% extends 'layouts/base_admin.html' %}
+{% block title %}
+    <title>Edit User | HealthPulse</title>
+{% endblock title %}
+{% block content %}
+
+
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Edit User </h3>
+    </div>
+    <div class="card-body">
+        
+        <form action="" method="post">
+            <div class="form_body">
+                
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="alert_box">
+        {% for category,message in messages %}
+        <div class="alert alert-{{category}}">{{ message }}</div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+            <div class="form_group">
+                <label for="uuid">UUID</label>
+                <input type="text" class="input_box" name="uuid" readonly value="{{ users.uuid | default('N/A') }}" placeholder="Enter UUID">
+            </div>
+            <div class="form_group">
+                <label for="name">Name</label>
+                <input type="text" class="input_box" name="name" value="{{ users.name | default('N/A') }}" placeholder="Enter name">
+            </div>
+            <div class="form_group">
+                <label for="email">Email</label>
+                <input type="email" class="input_box" name="email" value="{{ users.email | default('N/A') }}" placeholder="Enter email">
+            </div>
+            <div class="form_group">
+                <label for="dob">DOB</label>
+                <input type="date" class="input_box" name="dob" value="{{ users.dob | default('01/01/2000') }}" placeholder="Enter DOB">
+            </div>
+            <div class="form_group">
+                <label for="address">Address</label>
+                <input type="text" class="input_box" name="address" value="{{ users.address | default('N/A') }}" placeholder="Enter address">
+            </div>                     
+            <div class="form_group">
+                <label for="mobile_no">Mobile No</label>
+                <input type="text" class="input_box" name="mobile_no" value="{{ users.mobile_no | default('N/A') }}" placeholder="Enter Mobile No">
+            </div>
+        </div>
+            <div class="form_footer">   
+                    <input type="reset" class="btn btn-outline" value="cancle">
+                    <input type="submit" class="btn" value="submit">                        
+            </div>
+        </form>
+    
+    </div>
+</div>
+
+
+{% endblock content %}

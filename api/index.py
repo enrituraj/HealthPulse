@@ -390,7 +390,8 @@ def register():
 def admin_dashboard():
     admin = session.get('admin')
     if admin:
-        return render_template('admin/dashboard.html', admin=admin)
+        total_user = users.count_documents({})
+        return render_template('admin/dashboard.html', admin=admin,total_user=total_user)
     else:
         flash('You must be logged in to access this page.', 'error')
         return redirect(url_for('login'))
@@ -438,6 +439,49 @@ def enable_route(route_name):
 
 
 
+@app.route('/view_user/<user_id>')
+@onlyAdmin
+def view_user(user_id):
+    _id = ObjectId(user_id)
+    user = users.find_one({'_id': _id})
+    if user:
+        return render_template('admin/view_user.html',users=user)
+    else:
+        flash('.', 'error')
+        return redirect(url_for('user_detail'))
+    
+@app.route('/edit_user/<user_id>')
+@onlyAdmin
+def edit_user(user_id):
+    _id = ObjectId(user_id)
+    user = users.find_one({'_id': _id})
+    if user:
+        return render_template('admin/edit_user.html',users=user)
+    else:
+        flash('.', 'error')
+        return redirect(url_for('user_detail'))
+    
+@app.route('/change_password/<user_id>')
+@onlyAdmin
+def change_password_user(user_id):
+    _id = ObjectId(user_id)
+    user = users.find_one({'_id': _id})
+    if user:
+        return render_template('admin/change_password_user.html',users=user)
+    else:
+        flash('.', 'error')
+        return redirect(url_for('user_detail'))
+    
+@app.route('/delete_user/<user_id>')
+@onlyAdmin
+def delete_user(user_id):
+    _id = ObjectId(user_id)
+    user = users.find_one({'_id': _id})
+    if user:
+        return render_template('admin/delete_user.html',users=user)
+    else:
+        flash('.', 'error')
+        return redirect(url_for('user_detail'))
 
 
 
