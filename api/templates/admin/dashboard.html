@@ -13,12 +13,14 @@
                     <i class='bx bxs-user'></i>
                 </div>
                 <div class="widget_text">
-                    <span class="no">42</span>
+                    <span class="no">
+                        {% if total_user < 10 %}0{% endif %}{{ total_user | default('00') }}
+                    </span>
                     <span class="desc">User</span>
                 </div>
             </div>
             <div class="widget_footer">
-                <a href="">
+                <a href="{{ url_for('user_detail') }}">
                     <p>view more</p>
                     <i class='bx bx-right-arrow-alt'></i>
                 </a>

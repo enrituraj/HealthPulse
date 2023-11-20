@@ -1,0 +1,48 @@
+{% extends 'layouts/base_admin.html' %}
+{% block title %}
+    <title>View Details | HealthPulse</title>
+{% endblock title %}
+{% block content %}
+
+
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">View User</h3>
+    </div>
+    <div class="card-body">
+        <table class="profile_table">                    
+            <tr>
+                <td>UUID</td>
+                <td>{{ users.uuid | default('N/A') }}</td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td>{{ users.name | default('N/A') }}</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>{{ users.email | default('N/A') }}</td>
+            </tr>
+            <tr>
+                <td>Dob</td>
+                <td>{{ users.dob | default('N/A') }}</td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td>{{ users.address | default('N/A') }}</td>
+            </tr>
+            <tr>
+                <td>Mobile No</td>
+                <td>{{ users.mobile_no | default('N/A') }}</td>
+            </tr>
+            <tr>
+                <td>Joined At</td>
+                <td>{{ users.created_At | default('N/A') }}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+{% endblock content %}

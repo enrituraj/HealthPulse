@@ -66,16 +66,25 @@
                             <i class='bx bx-dots-vertical-rounded  menu_circle'></i>
                         </a>
                         <div class="dropdown-menu">
-                            <a href="" class="dropdown_item">
+                            <a href="{{ url_for('view_user', user_id=user._id) }}" class="dropdown_item">
                                 <i class='bx bx-show-alt'></i> View User
                             </a>
-                            <a href="" class="dropdown_item">
+                            <a href="{{ url_for('edit_user', user_id=user._id) }}" class="dropdown_item">
                                 <i class='bx bxs-edit'></i> Edit User
                             </a>
-                            <a href="" class="dropdown_item">
+                            <a href="{{ url_for('view_user', user_id=user._id) }}" class="dropdown_item">
+                                <i class='bx bxs-report' ></i> User Report
+                            </a>
+                            <a href="{{ url_for('view_user', user_id=user._id) }}" class="dropdown_item">
+                                <i class='bx bx-history'></i> Login History
+                            </a>
+                            <a href="{{ url_for('view_user', user_id=user._id) }}" class="dropdown_item">
+                                <i class='bx bxs-inbox'></i> User Message
+                            </a>
+                            <a href="{{ url_for('change_password_user', user_id=user._id) }}" class="dropdown_item">
                                 <i class='bx bx-lock-alt'></i> Change Password
                             </a>
-                            <a href="" class="dropdown_item logout">
+                            <a href="{{ url_for('delete_user', user_id=user._id) }}" class="dropdown_item logout">
                                 <i class='bx bx-trash'></i> Delete user</a>
                         </div>
                     </div>
