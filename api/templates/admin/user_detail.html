@@ -43,6 +43,17 @@
         <a href="" class="btn">Add New User</a>
     </div>
     <div class="card-body">
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div class="alert_box">
+            {% for category,message in messages %}
+            <div class="alert alert-{{category}}">{{ message }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+
         <table class="users_table" id="myTable">
             <thead>
                 <tr>
