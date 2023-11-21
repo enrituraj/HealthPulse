@@ -40,9 +40,34 @@
 <div class="card">
     <div class="card-header item-2">
         <h3 class="card-title">Route Settings</h3>
-        <a href="" class="btn">Add New Route</a>
+
+        <div class="dropdown" data-dropdown="">
+            <a class="dropdown_btn btn user__data" data-dropdown-button="">
+                <i class='bx bxs-cog' ></i>Settings
+            </a>
+            <div class="dropdown-menu">
+                <a href="{{ url_for('add_route') }}" class="dropdown_item">
+                    <i class='bx bx-show-alt'></i> Add New Route
+                </a>
+                <a href="{{ url_for('update_route') }}" class="dropdown_item">
+                    <i class='bx bxs-edit'></i> Update Route
+                </a>
+                <a href="{{ url_for('delete_route') }}" class="dropdown_item logout">
+                    <i class='bx bx-trash'></i> Delete Route</a>
+            </div>
+        </div>
     </div>
     <div class="card-body">
+        
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            <div class="alert_box">
+                {% for category,message in messages %}
+                <div class="alert alert-{{category}}">{{ message }}</div>
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% endwith %}
         <table class="setting_table" id="myTable">
             <thead>
                 <tr>
@@ -69,7 +94,15 @@
                 </td>
                 <td data-cell="Action">
                     <form action="{{ url_for('enable_route', route_name=data.route_name) }}" method="post">
-                        <input type="checkbox" name="enableCheckbox" class="toogle_btn" id="{{data.route_name}}" {% if data.is_enabled %}checked{% endif %} onchange="CheckedToogle(`{{ data.route_name }}`)">
+                        <input 
+                            type="checkbox" name="enableCheckbox" class="toogle_btn" 
+                            id="{{data.route_name}}" 
+                            {% if data.is_enabled %}
+                                checked
+                            {% endif %} 
+                            
+                            onchange="CheckedToogle(`{{ data.route_name }}`)">
+
                         <label for="{{data.route_name}}" class="switch"></label>
                         <button name="submit" hidden id="btn_{{ data.route_name }}" type="submit">submit</button>
                     </form>

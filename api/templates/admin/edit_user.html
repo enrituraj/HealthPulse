@@ -11,8 +11,16 @@
         <h3 class="card-title">Edit User </h3>
     </div>
     <div class="card-body">
-        
-        <form action="" method="post">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            <div class="alert_box">
+                {% for category,message in messages %}
+                <div class="alert alert-{{category}}">{{ message }}</div>
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% endwith %}
+        <form action="{{ url_for('edit_user', user_id=users._id) }}" method="post">
             <div class="form_body">
                 
     {% with messages = get_flashed_messages(with_categories=true) %}

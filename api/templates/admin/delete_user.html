@@ -41,7 +41,10 @@
                 <td>{{ users.created_At | default('N/A') }}</td>
             </tr>
         </table>
-        <button class="btn danger">Delete</button>
+        <form action="{{ url_for('delete_user', user_id=users._id) }}" method="post">
+            <input type="text" name="_id" value="{{ users._id | default('N/A') }}">
+            <button class="btn danger">Delete</button>
+        </form>
     </div>
 </div>
 

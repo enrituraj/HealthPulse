@@ -1,0 +1,52 @@
+{% extends 'layouts/base_admin.html' %}
+{% block title %}
+    <title>Update Route | HealthPulse</title>
+{% endblock title %}
+{% block content %}
+
+
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Update Route </h3>
+    </div>
+    <div class="card-body">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            <div class="alert_box">
+                {% for category,message in messages %}
+                <div class="alert alert-{{category}}">{{ message }}</div>
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% endwith %}
+        <form action="{{ url_for('update_route') }}" method="post">
+            <div class="form_body">
+                
+            <div class="form_group">
+                <label for="select_route">Select Route</label>
+                <select name="select_route" id="select_route">
+                    <option value="">Slect Route</option>
+                    
+                    {% for data in global_data %}
+                        <option value="{{data.route_name}}">{{data.route_name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form_group">
+                <label for="route_name">Route Name</label>
+                <input type="text" class="input_box" name="route_name" placeholder="Enter Route Name">
+            </div>
+
+        </div>
+            <div class="form_footer">   
+                    <input type="reset" class="btn btn-outline" value="cancle">
+                    <input type="submit" class="btn" value="submit">                        
+            </div>
+        </form>
+    
+    </div>
+</div>
+
+
+{% endblock content %}

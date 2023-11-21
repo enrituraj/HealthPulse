@@ -1,4 +1,4 @@
-from flask import Flask,render_template,redirect,url_for,request,flash,session,send_file,abort
+from flask import Flask,render_template,redirect,jsonify,url_for,request,flash,session,send_file,abort
 from functools import wraps
 # Form Validation
 import secrets
@@ -442,50 +442,260 @@ def enable_route(route_name):
 @app.route('/view_user/<user_id>')
 @onlyAdmin
 def view_user(user_id):
-    _id = ObjectId(user_id)
-    user = users.find_one({'_id': _id})
-    if user:
-        return render_template('admin/view_user.html',users=user)
+    admin = session.get('admin')
+    if admin:
+        _id = ObjectId(user_id)
+        user = users.find_one({'_id': _id})
+        if user:
+            return render_template('admin/view_user.html',users=user,admin=admin)
+        else:
+            flash('some problem in loading this page please try again', 'error')
+            return redirect(url_for('user_detail'))
     else:
-        flash('.', 'error')
-        return redirect(url_for('user_detail'))
+        flash('You must be logged in to access this page.', 'error')
+        return redirect(url_for('login'))
     
-@app.route('/edit_user/<user_id>')
+    
+@app.route('/edit_user/<user_id>', methods=['GET', 'POST'])
 @onlyAdmin
-def edit_user(user_id):
-    _id = ObjectId(user_id)
-    user = users.find_one({'_id': _id})
-    if user:
-        return render_template('admin/edit_user.html',users=user)
+def edit_user(user_id):    
+    if request.method == 'POST':        
+        name = request.form.get('name')
+        email = request.form.get('email')
+        dob = request.form.get('dob')
+        address = request.form.get('address')
+        mobile_no = request.form.get('mobile_no')
+        if not is_valid_name(name):
+            flash('Please enter a valid name.', 'error')
+        elif not is_valid_email(email):
+            flash('Please enter a valid email address.', 'error')
+        else:
+            update_user_data = {
+                '$set': {
+                    'name': name,
+                    'email': email,
+                    'dob':dob,
+                    'address':address,
+                    'mobile_no':mobile_no
+                }
+            }
+            users.update_one({'_id': ObjectId(user_id)}, update_user_data)
+            flash('Data changed successfully', 'success')
+            return redirect(url_for('user_detail'))
+        return redirect(url_for('edit_user',user_id=user_id))
     else:
-        flash('.', 'error')
-        return redirect(url_for('user_detail'))
+        admin = session.get('admin')
+        if admin:
+            _id = ObjectId(user_id)
+            user = users.find_one({'_id': _id})
+            if user:
+                return render_template('admin/edit_user.html',users=user,admin=admin)
+            else:
+                flash('Some problem in loading user.please try again', 'error')
+                return redirect(url_for('user_detail'))
+        else:
+            flash('You must be logged in to access this page.', 'error')
+            return redirect(url_for('login'))
+
+
+
+
     
-@app.route('/change_password/<user_id>')
+@app.route('/change_password/<user_id>', methods=['GET', 'POST'])
 @onlyAdmin
 def change_password_user(user_id):
-    _id = ObjectId(user_id)
-    user = users.find_one({'_id': _id})
-    if user:
-        return render_template('admin/change_password_user.html',users=user)
+    if request.method == 'POST':     
+        current_password = request.form.get('current_password')
+        password = request.form.get('password')
+        if not current_password or not password:
+            flash('All fields must be filled out.', 'error')
+        elif not is_valid_password(current_password) or not is_valid_password(password) :
+            flash('Please enter a strong password.', 'error')
+        else:                
+            user = users.find_one({'_id': ObjectId(user_id)})
+            if user and check_password_hash(user['password'], current_password):
+                #hashing new password
+                hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
+                update_password = {
+                    '$set': {
+                        'password':hashed_password,
+                        'text_password':password,
+                    }
+                }
+                users.update_one({'_id': ObjectId(user_id)}, update_password)
+                flash('Password changed successfully', 'success')
+                return redirect(url_for('user_detail'))
+        return redirect(url_for('change_password_user',user_id=user_id))
     else:
-        flash('.', 'error')
-        return redirect(url_for('user_detail'))
+        admin = session.get('admin')
+        if admin:
+            _id = ObjectId(user_id)
+            user = users.find_one({'_id': _id})
+            if user:
+                return render_template('admin/change_password_user.html',users=user,admin=admin)
+            else:
+                flash('Some problem in loading the page.', 'error')
+                return redirect(url_for('user_detail'))
+        else:
+            flash('You must be logged in to access this page.', 'error')
+            return redirect(url_for('login'))
+
     
-@app.route('/delete_user/<user_id>')
+@app.route('/delete_user/<user_id>', methods=['GET', 'POST'])
 @onlyAdmin
 def delete_user(user_id):
-    _id = ObjectId(user_id)
-    user = users.find_one({'_id': _id})
-    if user:
-        return render_template('admin/delete_user.html',users=user)
+    if request.method == 'POST':
+        result = users.delete_one({'_id': ObjectId(user_id)})
+
+        if result.deleted_count == 1:
+            flash(f"User with _id {user_id} deleted successfully.", 'success')
+            return redirect(url_for('user_detail'))
+        else:
+            flash(f"User with _id {user_id} not found or could not be deleted.", 'success')
+            return redirect(url_for('delete_user',user_id=user_id))
+            
     else:
-        flash('.', 'error')
-        return redirect(url_for('user_detail'))
+        admin = session.get('admin')
+        if admin:
+            _id = ObjectId(user_id)
+            user = users.find_one({'_id': _id})
+            if user:
+                return render_template('admin/delete_user.html',users=user,admin=admin)
+            else:
+                flash('Some problem in loading the page.', 'error')
+                return redirect(url_for('user_detail'))
+        else:
+            flash('You must be logged in to access this page.', 'error')
+            return redirect(url_for('login'))
+        
 
 
 
+@app.route('/admin/add_route', methods=['GET', 'POST'])
+@onlyAdmin
+def add_route():
+    if request.method == 'POST':
+        route_name = request.form.get('route_name')
+        status = request.form.get('status')
+        
+        if not route_name or not status:
+            flash('All fields must be filled out.', 'error')
+        else:
+            existing_route = global_settings.find_one({'route_name': route_name})
+            if existing_route:
+                flash(f'{route_name} already registered. Please use a different route_name.', 'error')
+            else:
+                if status == 'True':
+                    is_enabled = True
+                else:
+                    is_enabled = False
+                route_data = {
+                    'route_name':route_name,
+                    'is_enabled': is_enabled,
+                }
+                global_settings.insert_one(route_data)
+                flash('Route Added successful.', 'success')
+                return redirect(url_for('settings'))
+        return redirect(url_for('add_route'))
+    else:
+        admin = session.get('admin')
+        if admin:
+            return render_template('admin/add_route.html',admin=admin)
+        else:
+            flash('You must be logged in to access this page.', 'error')
+            return redirect(url_for('login'))
 
+
+
+@app.route('/admin/update_route', methods=['GET', 'POST'])
+@onlyAdmin
+def update_route():
+    if request.method == 'POST':
+        select_route = request.form.get('select_route')
+        route_name = request.form.get('route_name')
+        if not route_name:
+            flash('.','error')
+        else:
+            update_route_data = {
+                '$set': {
+                    'route_name': route_name,
+                }
+            }
+            global_settings.update_one({'route_name': select_route}, update_route_data)
+            flash('Route changed successfully', 'success')
+            return redirect(url_for('settings'))
+        return redirect(url_for('update_route'))
+    else:
+        admin = session.get('admin')
+        if admin:
+            global_data = list(global_settings.find())        
+            return render_template('admin/update_route.html', admin=admin,global_data= global_data)
+        else:
+            flash('You must be logged in to access this page.', 'error')
+            return redirect(url_for('login'))
+
+
+@app.route('/admin/delete_route', methods=['GET', 'POST'])
+@onlyAdmin
+def delete_route():
+    if request.method == 'POST':
+        select_route = request.form.get('select_route')
+        if not select_route:
+            flash('please select route to delete.','error')
+        else:            
+            result = global_settings.delete_one({'route_name':select_route})
+            if result.deleted_count == 1:
+                flash('Route Deleted successfully', 'success')
+                return redirect(url_for('settings'))
+            else:
+                flash('Route Does not deleted', 'error')
+                return redirect(url_for('delete_route'))
+        return redirect(url_for('delete_route'))
+    else:
+        admin = session.get('admin')
+        if admin:
+            global_data = list(global_settings.find())        
+            return render_template('admin/delete_route.html', admin=admin,global_data= global_data)
+        else:
+            flash('You must be logged in to access this page.', 'error')
+            return redirect(url_for('login'))
+
+
+@app.route('/admin/database')
+@onlyAdmin
+def database():
+    admin = session.get('admin')
+    if admin:
+        collection_names = db.list_collection_names()
+        return render_template('admin/database.html', collection_names=collection_names,admin=admin)
+    else:
+        flash('You must be logged in to access this page.', 'error')
+        return redirect(url_for('login'))
+
+
+@app.route('/get_collection_data/<string:collection_name>')
+@onlyAdmin
+def get_collection_data(collection_name):
+    try:
+        # Access the specified collection and fetch all documents
+        collection_data = list(db[collection_name].find())
+
+        if collection_name == 'images.chunks':
+            for document in collection_data:
+                document['files_id'] = str(ObjectId(document['files_id']))
+                document['data'] = "BASE64 Encoded Data"
+        
+        for document in collection_data:
+            document['_id'] = str(ObjectId(document['_id']))
+            if 'image_files' in document:
+                for image_file in document.get('image_files', []):
+                    image_file['file_id'] = str(ObjectId(image_file['file_id']))
+            
+
+        # Return the collection data as JSON
+        return jsonify(collection_data)    
+    except Exception as e:
+        return jsonify({'error': str(e)})
 
 
 
