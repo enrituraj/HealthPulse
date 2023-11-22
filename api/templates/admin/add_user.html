@@ -1,0 +1,74 @@
+{% extends 'layouts/base_admin.html' %}
+{% block title %}
+    <title>Add New User | HealthPulse</title>
+{% endblock title %}
+{% block content %}
+
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Add New User </h3>
+    </div>
+    <div class="card-body">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            <div class="alert_box">
+                {% for category,message in messages %}
+                <div class="alert alert-{{category}}">{{ message }}</div>
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% endwith %}
+
+            <form method="post" action="{{ url_for('add_user') }}">
+                
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" class="input_box" placeholder="Full Name">                    
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" class="input_box" placeholder="Email Address">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" class="input_box" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <label for="confirm_password">Confirm Password</label>
+                    <input type="password" id="confirm_password" name="confirm_password" class="input_box" placeholder="Confirm Password">
+                </div>
+                
+                <div class="form-group">
+                    <input type="submit" class="btn-form_submit" value="Add New User">
+                </div>
+            </form>
+
+
+        <form action="{{ url_for('add_user') }}" method="post">
+            <div class="form_body">
+                
+            <div class="form_group">
+                <label for="route_name">Route Name</label>
+                <input type="text" class="input_box" name="route_name" placeholder="Enter Route Name">
+            </div>
+
+
+        </div>
+
+
+
+
+            <div class="form_footer">   
+                    <input type="reset" class="btn btn-outline" value="cancle">
+                    <input type="submit" class="btn" value="submit">                        
+            </div>
+        </form>
+    
+    </div>
+</div>
+
+
+{% endblock content %}

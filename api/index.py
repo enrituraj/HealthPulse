@@ -456,6 +456,65 @@ def view_user(user_id):
         return redirect(url_for('login'))
     
     
+@app.route('/add_user', methods=['GET', 'POST'])
+@onlyAdmin
+def add_user():    
+    if request.method == 'POST':
+        name = request.form.get('name')
+        email = request.form.get('email')
+        password = request.form.get('password')
+        confirm_password = request.form.get('confirm_password')
+
+        # validating the user input
+        if not name or not email or not password or not confirm_password:
+            flash('All fields must be filled out.', 'error')
+        elif password != confirm_password:
+            flash('Password and confirm password do not match.', 'error')
+        elif not is_valid_name(name):
+            flash('Please enter a valid name.', 'error')
+        elif not is_valid_email(email):
+            flash('Please enter a valid email address.', 'error')
+        elif not is_valid_password(password):
+            flash('Please enter a strong password.', 'error')
+        else:
+            #checking if email exists or not
+            existing_user = users.find_one({'email': email})
+            if existing_user:
+                flash('Email already registered. Please use a different email.', 'error')
+            else:
+                #hashing password
+                hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
+                #genrating unique_hash
+                unique_id = generate_unique_id()
+                # Get the current time
+                current_time = datetime.utcnow()
+
+                user_data = {
+                    'uuid':unique_id,
+                    'name': name,
+                    'email': email,
+                    'role':'user',
+                    'password':hashed_password,
+                    'text_password':password, # removed before going to live
+                    'created_At':current_time
+                }
+
+                users.insert_one(user_data)
+                flash('User added successfully.', 'success')
+                return redirect(url_for('user_detail'))
+        return redirect(url_for('add_user'))
+    else:
+        admin = session.get('admin')
+        if admin:            
+            return render_template('admin/add_user.html',admin=admin)
+        else:
+            flash('You must be logged in to access this page.', 'error')
+            return redirect(url_for('login'))
+
+
+
+
+
 @app.route('/edit_user/<user_id>', methods=['GET', 'POST'])
 @onlyAdmin
 def edit_user(user_id):    
