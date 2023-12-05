@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>425497</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<section id="prediction-of-diabetes" class="cell markdown" data-papermill="{&quot;duration&quot;:1.3005e-2,&quot;end_time&quot;:&quot;2023-09-24T12:05:13.451867&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-09-24T12:05:13.438862&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]">
+<h1>Prediction of diabetes</h1>
+<ol>
+<li><a href="#1">Load and Check Data</a></li>
+<li><a href="#2">Change the Data Type</a>
+<ul>
+<li><a href="#3">Making data types integer</a></li>
+<li><a href="#4">Removing from the Data</a></li>
+<li><a href="#5">Transform the Data</a></li>
+</ul></li>
+<li><a href="#6">Split and Train</a></li>
+</ol>
+</section>
+<div class="cell code" data-execution_count="1" data-_cell_guid="b1076dfc-b9ad-4769-8c92-a6c4dae69d19" data-_uuid="8f2839f25d086af736a60e9eeb907d3b93b6e0e5" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-24T12:05:13.478699Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-24T12:05:13.478258Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-24T12:05:16.094254Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-24T12:05:16.092972Z&quot;}" data-papermill="{&quot;duration&quot;:2.632531,&quot;end_time&quot;:&quot;2023-09-24T12:05:16.097262&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-09-24T12:05:13.464731&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]">
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This Python 3 environment comes with many helpful analytics libraries installed</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># It is defined by the kaggle/python Docker image: https://github.com/kaggle/docker-python</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># For example, here&#39;s several helpful packages to load</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np <span class="co"># linear algebra</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd <span class="co"># data processing, CSV file I/O (e.g. pd.read_csv)</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn <span class="im">import</span> linear_model</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> r2_score,confusion_matrix</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># import warnings</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># filter warnings</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">&#39;ignore&#39;</span>)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Input data files are available in the read-only &quot;../input/&quot; directory</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># For example, running this (by clicking run or pressing Shift+Enter) will list all files under the input directory</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> dirname, _, filenames <span class="kw">in</span> os.walk(<span class="st">&#39;/kaggle/input&#39;</span>):</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> filename <span class="kw">in</span> filenames:</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(os.path.join(dirname, filename))</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co"># You can write up to 20GB to the current directory (/kaggle/working/) that gets preserved as output when you create a version using &quot;Save &amp; Run All&quot; </span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co"># You can also write temporary files to /kaggle/temp/, but they won&#39;t be saved outside of the current session</span></span></code></pre></div>
+<div class="output stream stdout">
+<pre><code>/kaggle/input/diabetes-prediction-dataset/diabetes_prediction_dataset.csv
+</code></pre>
+</div>
+</div>
+<div class="cell markdown" data-papermill="{&quot;duration&quot;:1.1095e-2,&quot;end_time&quot;:&quot;2023-09-24T12:05:16.120000&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-09-24T12:05:16.108905&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]">
+<p><a id="1"></a></p>
+<h1 id="load-and-check-data">Load and Check Data</h1>
+</div>
+<div class="cell code" data-execution_count="2" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-24T12:05:16.144920Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-24T12:05:16.144340Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-24T12:05:16.345877Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-24T12:05:16.344659Z&quot;}" data-papermill="{&quot;duration&quot;:0.217276,&quot;end_time&quot;:&quot;2023-09-24T12:05:16.348707&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-09-24T12:05:16.131431&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]">
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(<span class="st">&quot;/kaggle/input/diabetes-prediction-dataset/diabetes_prediction_dataset.csv&quot;</span>)</span></code></pre></div>
+</div>
+<div class="cell code" data-execution_count="3" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-24T12:05:16.373567Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-24T12:05:16.373151Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-24T12:05:16.403674Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-24T12:05:16.402492Z&quot;}" data-papermill="{&quot;duration&quot;:4.5896e-2,&quot;end_time&quot;:&quot;2023-09-24T12:05:16.406301&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-09-24T12:05:16.360405&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]">
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data.head()</span></code></pre></div>
+<div class="output execute_result" data-execution_count="3">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>gender</th>
+      <th>age</th>
+      <th>hypertension</th>
+      <th>heart_disease</th>
+      <th>smoking_history</th>
+      <th>bmi</th>
+      <th>HbA1c_level</th>
+      <th>blood_glucose_level</th>
+      <th>diabetes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Female</td>
+      <td>80.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>never</td>
+      <td>25.19</td>
+      <td>6.6</td>
+      <td>140</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Female</td>
+      <td>54.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>No Info</td>
+      <td>27.32</td>
+      <td>6.6</td>
+      <td>80</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Male</td>
+      <td>28.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>never</td>
+      <td>27.32</td>
+      <td>5.7</td>
+      <td>158</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Female</td>
+      <td>36.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>current</td>
+      <td>23.45</td>
+      <td>5.0</td>
+      <td>155</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Male</td>
+      <td>76.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>current</td>
+      <td>20.14</td>
+      <td>4.8</td>
+      <td>155</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell code" data-execution_count="4" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-24T12:05:16.433778Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-24T12:05:16.433390Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-24T12:05:16.483210Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-24T12:05:16.481917Z&quot;}" data-papermill="{&quot;duration&quot;:6.6484e-2,&quot;end_time&quot;:&quot;2023-09-24T12:05:16.485709&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-09-24T12:05:16.419225&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]">
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>data.info()</span></code></pre></div>
+<div class="output stream stdout">
+<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 100000 entries, 0 to 99999
+Data columns (total 9 columns):
+ #   Column               Non-Null Count   Dtype  
+---  ------               --------------   -----  
+ 0   gender               100000 non-null  object 
+ 1   age                  100000 non-null  float64
+ 2   hypertension         100000 non-null  int64  
+ 3   heart_disease        100000 non-null  int64  
+ 4   smoking_history      100000 non-null  object 
+ 5   bmi                  100000 non-null  float64
+ 6   HbA1c_level          100000 non-null  float64
+ 7   blood_glucose_level  100000 non-null  int64  
+ 8   diabetes             100000 non-null  int64  
+dtypes: float64(3), int64(4), object(2)
+memory usage: 6.9+ MB
+</code></pre>
+</div>
+</div>
+<div class="cell code" data-execution_count="5" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-24T12:05:16.511758Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-24T12:05:16.511026Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-24T12:05:16.521790Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-24T12:05:16.520231Z&quot;}" data-papermill="{&quot;duration&quot;:2.7379e-2,&quot;end_time&quot;:&quot;2023-09-24T12:05:16.525112&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-09-24T12:05:16.497733&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]">
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> bar_plot(variable):</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">&#39;&#39;&#39;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">    input: variable ex: &quot;Sex&quot;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">    output: bar plot &amp; value count</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">    &#39;&#39;&#39;</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># get feature</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    var <span class="op">=</span> data[variable]</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># count number of categorical variable(value/sample)</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    var_value <span class="op">=</span> var.value_counts()</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># visualize</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">3</span>))</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    plt.bar(var_value.index, var_value,width<span class="op">=</span> <span class="dv">1</span><span class="op">/</span>(var.unique().size))</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    plt.xticks(var_value.index, var_value.index.values)</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    plt.ylabel(<span class="st">&quot;Frequency&quot;</span>)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    plt.title(variable)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;</span><span class="sc">{}</span><span class="st">: </span><span class="ch">\n</span><span class="st"> </span><span class="sc">{}</span><span class="st">&quot;</span>.<span class="bu">format</span>(variable,var_value))</span></code></pre></div>
+</div>
+<div class="cell code" data-execution_count="6" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-24T12:05:16.551713Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-24T12:05:16.551229Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-24T12:05:17.325265Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-24T12:05:17.323472Z&quot;}" data-papermill="{&quot;duration&quot;:0.7904,&quot;end_time&quot;:&quot;2023-09-24T12:05:17.327828&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-09-24T12:05:16.537428&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]">
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>category1 <span class="op">=</span> [<span class="st">&quot;hypertension&quot;</span>,<span class="st">&quot;heart_disease&quot;</span>,<span class="st">&quot;smoking_history&quot;</span>]</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> c <span class="kw">in</span> category1:</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    bar_plot(c)</span></code></pre></div>
+<div class="output display_data">
+<p><img src="{{ url_for('static', filename='img/colab/01.png') }}" /></p>
+</div>
+<div class="output stream stdout">
+<pre><code>hypertension: 
+ hypertension
+0    92515
+1     7485
+Name: count, dtype: int64
+</code></pre>
+</div>
+<div class="output display_data">
+  <p><img src="{{ url_for('static', filename='img/colab/02.png') }}" /></p>
+</div>
+<div class="output stream stdout">
+<pre><code>heart_disease: 
+ heart_disease
+0    96058
+1     3942
+Name: count, dtype: int64
+</code></pre>
+</div>
+<div class="output display_data">
+  <p><img src="{{ url_for('static', filename='img/colab/03.png') }}" /></p>
+</div>
+<div class="output stream stdout">
+<pre><code>smoking_history: 
+ smoking_history
+No Info        35816
+never          35095
+former          9352
+current         9286
+not current     6447
+ever            4004
+Name: count, dtype: int64
+</code></pre>
+</div>
+</div>
+<div class="cell markdown" data-papermill="{&quot;duration&quot;:1.2877e-2,&quot;end_time&quot;:&quot;2023-09-24T12:05:17.354047&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-09-24T12:05:17.341170&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]">
+<p><a id="2"></a></p>
+<h1 id="change-the-data-type">Change the Data Type</h1>
+</div>
+<div class="cell markdown" data-papermill="{&quot;duration&quot;:1.2681e-2,&quot;end_time&quot;:&quot;2023-09-24T12:05:17.379915&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-09-24T12:05:17.367234&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]">
+<p><a id="3"></a></p>
+<h2 id="making-data-types-integer">Making data types integer</h2>
+</div>
+<div class="cell code" data-execution_count="7" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-24T12:05:17.408339Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-24T12:05:17.407646Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-24T12:05:17.441852Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-24T12:05:17.440204Z&quot;}" data-papermill="{&quot;duration&quot;:5.1535e-2,&quot;end_time&quot;:&quot;2023-09-24T12:05:17.444623&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-09-24T12:05:17.393088&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]">
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>data.info()</span></code></pre></div>
+<div class="output stream stdout">
+<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 100000 entries, 0 to 99999
+Data columns (total 9 columns):
+ #   Column               Non-Null Count   Dtype  
+---  ------               --------------   -----  
+ 0   gender               100000 non-null  object 
+ 1   age                  100000 non-null  float64
+ 2   hypertension         100000 non-null  int64  
+ 3   heart_disease        100000 non-null  int64  
+ 4   smoking_history      100000 non-null  object 
+ 5   bmi                  100000 non-null  float64
+ 6   HbA1c_level          100000 non-null  float64
+ 7   blood_glucose_level  100000 non-null  int64  
+ 8   diabetes             100000 non-null  int64  
+dtypes: float64(3), int64(4), object(2)
+memory usage: 6.9+ MB
+</code></pre>
+</div>
+</div>
+<div class="cell code" data-execution_count="8" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-24T12:05:17.475409Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-24T12:05:17.474212Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-24T12:05:17.491898Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-24T12:05:17.490688Z&quot;}" data-papermill="{&quot;duration&quot;:3.6332e-2,&quot;end_time&quot;:&quot;2023-09-24T12:05:17.494722&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-09-24T12:05:17.458390&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]">
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>pd.unique(data.smoking_history)</span></code></pre></div>
+<div class="output execute_result" data-execution_count="8">
+<pre><code>array([&#39;never&#39;, &#39;No Info&#39;, &#39;current&#39;, &#39;former&#39;, &#39;ever&#39;, &#39;not current&#39;],
+      dtype=object)</code></pre>
+</div>
+</div>
+<div class="cell code" data-execution_count="9" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-24T12:05:17.525899Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-24T12:05:17.525470Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-24T12:05:17.542377Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-24T12:05:17.540728Z&quot;}" data-papermill="{&quot;duration&quot;:3.6925e-2,&quot;end_time&quot;:&quot;2023-09-24T12:05:17.545599&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-09-24T12:05:17.508674&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]">
+<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>pd.unique(data.gender)</span></code></pre></div>
+<div class="output execute_result" data-execution_count="9">
+<pre><code>array([&#39;Female&#39;, &#39;Male&#39;, &#39;Other&#39;], dtype=object)</code></pre>
+</div>
+</div>
+<div class="cell markdown" data-papermill="{&quot;duration&quot;:1.3979e-2,&quot;end_time&quot;:&quot;2023-09-24T12:05:17.573731&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-09-24T12:05:17.559752&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]">
+<p>For changing objects to integer</p>
+</div>
+<div class="cell code" data-execution_count="10" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-24T12:05:17.603626Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-24T12:05:17.603181Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-24T12:05:17.609586Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-24T12:05:17.608367Z&quot;}" data-papermill="{&quot;duration&quot;:2.4279e-2,&quot;end_time&quot;:&quot;2023-09-24T12:05:17.611946&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-09-24T12:05:17.587667&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]">
+<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> change_string_to_int(column):</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    variables<span class="op">=</span>pd.unique(data[column])</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> item <span class="kw">in</span> <span class="bu">range</span>(variables.size):</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>        data[column]<span class="op">=</span>[item <span class="cf">if</span> each<span class="op">==</span>variables[item] <span class="cf">else</span> each <span class="cf">for</span> each <span class="kw">in</span> data[column]]</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data[column]</span></code></pre></div>
+</div>
+<div class="cell code" data-execution_count="11" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-24T12:05:17.642002Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-24T12:05:17.641593Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-24T12:05:17.824169Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-24T12:05:17.822747Z&quot;}" data-papermill="{&quot;duration&quot;:0.200988,&quot;end_time&quot;:&quot;2023-09-24T12:05:17.827288&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-09-24T12:05:17.626300&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]">
+<div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>data[<span class="st">&quot;gender&quot;</span>]<span class="op">=</span>change_string_to_int(<span class="st">&quot;gender&quot;</span>)</span></code></pre></div>
+</div>
+<div class="cell code" data-execution_count="12" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-24T12:05:17.857218Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-24T12:05:17.856483Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-24T12:05:18.153847Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-24T12:05:18.152627Z&quot;}" data-papermill="{&quot;duration&quot;:0.315485,&quot;end_time&quot;:&quot;2023-09-24T12:05:18.156562&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-09-24T12:05:17.841077&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]">
+<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>data[<span class="st">&quot;smoking_history&quot;</span>]<span class="op">=</span>change_string_to_int(<span class="st">&quot;smoking_history&quot;</span>)</span></code></pre></div>
+</div>
+<div class="cell code" data-execution_count="13" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-24T12:05:18.186201Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-24T12:05:18.185480Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-24T12:05:18.200935Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-24T12:05:18.199754Z&quot;}" data-papermill="{&quot;duration&quot;:3.3002e-2,&quot;end_time&quot;:&quot;2023-09-24T12:05:18.203404&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-09-24T12:05:18.170402&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]">
+<div class="sourceCode" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>data.head()</span></code></pre></div>
+<div class="output execute_result" data-execution_count="13">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>gender</th>
+      <th>age</th>
+      <th>hypertension</th>
+      <th>heart_disease</th>
+      <th>smoking_history</th>
+      <th>bmi</th>
+      <th>HbA1c_level</th>
+      <th>blood_glucose_level</th>
+      <th>diabetes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>80.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>25.19</td>
+      <td>6.6</td>
+      <td>140</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>54.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>27.32</td>
+      <td>6.6</td>
+      <td>80</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>28.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>27.32</td>
+      <td>5.7</td>
+      <td>158</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>36.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>23.45</td>
+      <td>5.0</td>
+      <td>155</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>76.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>20.14</td>
+      <td>4.8</td>
+      <td>155</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell code" data-execution_count="14" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-24T12:05:18.234199Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-24T12:05:18.233814Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-24T12:05:18.246815Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-24T12:05:18.245693Z&quot;}" data-papermill="{&quot;duration&quot;:3.1101e-2,&quot;end_time&quot;:&quot;2023-09-24T12:05:18.249233&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-09-24T12:05:18.218132&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]">
+<div class="sourceCode" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>data.info()</span></code></pre></div>
+<div class="output stream stdout">
+<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 100000 entries, 0 to 99999
+Data columns (total 9 columns):
+ #   Column               Non-Null Count   Dtype  
+---  ------               --------------   -----  
+ 0   gender               100000 non-null  int64  
+ 1   age                  100000 non-null  float64
+ 2   hypertension         100000 non-null  int64  
+ 3   heart_disease        100000 non-null  int64  
+ 4   smoking_history      100000 non-null  int64  
+ 5   bmi                  100000 non-null  float64
+ 6   HbA1c_level          100000 non-null  float64
+ 7   blood_glucose_level  100000 non-null  int64  
+ 8   diabetes             100000 non-null  int64  
+dtypes: float64(3), int64(6)
+memory usage: 6.9 MB
+</code></pre>
+</div>
+</div>
+<div class="cell markdown" data-papermill="{&quot;duration&quot;:1.3565e-2,&quot;end_time&quot;:&quot;2023-09-24T12:05:18.276957&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-09-24T12:05:18.263392&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]">
+<p><a id="4"></a></p>
+<h2 id="removing-from-the-data">Removing from the Data</h2>
+</div>
+<div class="cell code" data-execution_count="15" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-24T12:05:18.306983Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-24T12:05:18.306587Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-24T12:05:18.941617Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-24T12:05:18.940501Z&quot;}" data-papermill="{&quot;duration&quot;:0.653476,&quot;end_time&quot;:&quot;2023-09-24T12:05:18.944743&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-09-24T12:05:18.291267&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]">
+<div class="sourceCode" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>f,ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">10</span>))</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>sns.heatmap(data.corr(numeric_only<span class="op">=</span><span class="va">True</span>), annot<span class="op">=</span><span class="va">True</span>, linewidths<span class="op">=</span><span class="fl">.5</span>, fmt<span class="op">=</span> <span class="st">&#39;.1f&#39;</span>,ax<span class="op">=</span>ax,)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<div class="output display_data">
+  <p><img src="{{ url_for('static', filename='img/colab/04.png') }}" /></p>
+</div>
+</div>
+<div class="cell code" data-execution_count="16" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-24T12:05:18.978480Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-24T12:05:18.978050Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-24T12:05:18.987183Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-24T12:05:18.986264Z&quot;}" data-papermill="{&quot;duration&quot;:2.8837e-2,&quot;end_time&quot;:&quot;2023-09-24T12:05:18.989639&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-09-24T12:05:18.960802&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]">
+<div class="sourceCode" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>data.drop(<span class="st">&quot;gender&quot;</span>,axis<span class="op">=</span><span class="dv">1</span>,inplace<span class="op">=</span><span class="va">True</span>)</span></code></pre></div>
+</div>
+<div class="cell code" data-execution_count="17" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-24T12:05:19.023113Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-24T12:05:19.022256Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-24T12:05:19.038192Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-24T12:05:19.037037Z&quot;}" data-papermill="{&quot;duration&quot;:3.5729e-2,&quot;end_time&quot;:&quot;2023-09-24T12:05:19.040737&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-09-24T12:05:19.005008&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]">
+<div class="sourceCode" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>data.head()</span></code></pre></div>
+<div class="output execute_result" data-execution_count="17">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>hypertension</th>
+      <th>heart_disease</th>
+      <th>smoking_history</th>
+      <th>bmi</th>
+      <th>HbA1c_level</th>
+      <th>blood_glucose_level</th>
+      <th>diabetes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>80.0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>25.19</td>
+      <td>6.6</td>
+      <td>140</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>54.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>27.32</td>
+      <td>6.6</td>
+      <td>80</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>28.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>27.32</td>
+      <td>5.7</td>
+      <td>158</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>36.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>23.45</td>
+      <td>5.0</td>
+      <td>155</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>76.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>20.14</td>
+      <td>4.8</td>
+      <td>155</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell markdown" data-papermill="{&quot;duration&quot;:1.5376e-2,&quot;end_time&quot;:&quot;2023-09-24T12:05:19.071804&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-09-24T12:05:19.056428&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]">
+<p><a id="5"></a></p>
+<h2 id="transform-the-data">Transform the Data</h2>
+</div>
+<div class="cell code" data-execution_count="18" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-24T12:05:19.169740Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-24T12:05:19.168870Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-24T12:05:19.250384Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-24T12:05:19.249205Z&quot;}" data-papermill="{&quot;duration&quot;:0.101478,&quot;end_time&quot;:&quot;2023-09-24T12:05:19.252954&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-09-24T12:05:19.151476&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]">
+<div class="sourceCode" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>data.describe()</span></code></pre></div>
+<div class="output execute_result" data-execution_count="18">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>hypertension</th>
+      <th>heart_disease</th>
+      <th>smoking_history</th>
+      <th>bmi</th>
+      <th>HbA1c_level</th>
+      <th>blood_glucose_level</th>
+      <th>diabetes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>100000.000000</td>
+      <td>100000.00000</td>
+      <td>100000.000000</td>
+      <td>100000.000000</td>
+      <td>100000.000000</td>
+      <td>100000.000000</td>
+      <td>100000.000000</td>
+      <td>100000.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>41.885856</td>
+      <td>0.07485</td>
+      <td>0.039420</td>
+      <td>1.306950</td>
+      <td>27.320767</td>
+      <td>5.527507</td>
+      <td>138.058060</td>
+      <td>0.085000</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>22.516840</td>
+      <td>0.26315</td>
+      <td>0.194593</td>
+      <td>1.454501</td>
+      <td>6.636783</td>
+      <td>1.070672</td>
+      <td>40.708136</td>
+      <td>0.278883</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.080000</td>
+      <td>0.00000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>10.010000</td>
+      <td>3.500000</td>
+      <td>80.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>24.000000</td>
+      <td>0.00000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>23.630000</td>
+      <td>4.800000</td>
+      <td>100.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>43.000000</td>
+      <td>0.00000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>27.320000</td>
+      <td>5.800000</td>
+      <td>140.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>60.000000</td>
+      <td>0.00000</td>
+      <td>0.000000</td>
+      <td>2.000000</td>
+      <td>29.580000</td>
+      <td>6.200000</td>
+      <td>159.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>80.000000</td>
+      <td>1.00000</td>
+      <td>1.000000</td>
+      <td>5.000000</td>
+      <td>95.690000</td>
+      <td>9.000000</td>
+      <td>300.000000</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell markdown" data-papermill="{&quot;duration&quot;:1.6658e-2,&quot;end_time&quot;:&quot;2023-09-24T12:05:19.286492&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-09-24T12:05:19.269834&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]">
+<p>Normalization</p>
+</div>
+<div class="cell code" data-execution_count="19" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-24T12:05:19.322499Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-24T12:05:19.320401Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-24T12:05:19.342346Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-24T12:05:19.341164Z&quot;}" data-papermill="{&quot;duration&quot;:4.2184e-2,&quot;end_time&quot;:&quot;2023-09-24T12:05:19.345011&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-09-24T12:05:19.302827&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]">
+<div class="sourceCode" id="cb28"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> (data <span class="op">-</span> data.<span class="bu">min</span>())<span class="op">/</span>(data.<span class="bu">max</span>()<span class="op">-</span>data.<span class="bu">min</span>())</span></code></pre></div>
+</div>
+<div class="cell code" data-execution_count="20" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-24T12:05:19.380233Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-24T12:05:19.379816Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-24T12:05:19.396983Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-24T12:05:19.396085Z&quot;}" data-papermill="{&quot;duration&quot;:3.7712e-2,&quot;end_time&quot;:&quot;2023-09-24T12:05:19.399553&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-09-24T12:05:19.361841&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]">
+<div class="sourceCode" id="cb29"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>data.head()</span></code></pre></div>
+<div class="output execute_result" data-execution_count="20">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>hypertension</th>
+      <th>heart_disease</th>
+      <th>smoking_history</th>
+      <th>bmi</th>
+      <th>HbA1c_level</th>
+      <th>blood_glucose_level</th>
+      <th>diabetes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.000000</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.177171</td>
+      <td>0.563636</td>
+      <td>0.272727</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.674675</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.2</td>
+      <td>0.202031</td>
+      <td>0.563636</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.349349</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.202031</td>
+      <td>0.400000</td>
+      <td>0.354545</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.449449</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.4</td>
+      <td>0.156863</td>
+      <td>0.272727</td>
+      <td>0.340909</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.949950</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.4</td>
+      <td>0.118231</td>
+      <td>0.236364</td>
+      <td>0.340909</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell code" data-execution_count="21" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-24T12:05:19.435656Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-24T12:05:19.434942Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-24T12:05:19.443116Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-24T12:05:19.442155Z&quot;}" data-papermill="{&quot;duration&quot;:2.9551e-2,&quot;end_time&quot;:&quot;2023-09-24T12:05:19.445687&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-09-24T12:05:19.416136&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]">
+<div class="sourceCode" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>data[<span class="st">&quot;hypertension&quot;</span>]<span class="op">=</span> data[<span class="st">&quot;hypertension&quot;</span>].astype(<span class="st">&quot;int64&quot;</span>)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>data[<span class="st">&quot;heart_disease&quot;</span>]<span class="op">=</span> data[<span class="st">&quot;heart_disease&quot;</span>].astype(<span class="st">&quot;int64&quot;</span>)</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>data[<span class="st">&quot;diabetes&quot;</span>]<span class="op">=</span> data[<span class="st">&quot;diabetes&quot;</span>].astype(<span class="st">&quot;int64&quot;</span>)</span></code></pre></div>
+</div>
+<div class="cell code" data-execution_count="22" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-24T12:05:19.482535Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-24T12:05:19.480954Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-24T12:05:19.500392Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-24T12:05:19.499252Z&quot;}" data-papermill="{&quot;duration&quot;:4.0948e-2,&quot;end_time&quot;:&quot;2023-09-24T12:05:19.503378&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-09-24T12:05:19.462430&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]">
+<div class="sourceCode" id="cb31"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>data.head()</span></code></pre></div>
+<div class="output execute_result" data-execution_count="22">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>hypertension</th>
+      <th>heart_disease</th>
+      <th>smoking_history</th>
+      <th>bmi</th>
+      <th>HbA1c_level</th>
+      <th>blood_glucose_level</th>
+      <th>diabetes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.000000</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.0</td>
+      <td>0.177171</td>
+      <td>0.563636</td>
+      <td>0.272727</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.674675</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.2</td>
+      <td>0.202031</td>
+      <td>0.563636</td>
+      <td>0.000000</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.349349</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0.202031</td>
+      <td>0.400000</td>
+      <td>0.354545</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.449449</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.4</td>
+      <td>0.156863</td>
+      <td>0.272727</td>
+      <td>0.340909</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.949950</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.4</td>
+      <td>0.118231</td>
+      <td>0.236364</td>
+      <td>0.340909</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell markdown" data-papermill="{&quot;duration&quot;:2.1916e-2,&quot;end_time&quot;:&quot;2023-09-24T12:05:19.550021&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-09-24T12:05:19.528105&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]">
+<p><a id="6"></a></p>
+<h1 id="split-and-train">Split and Train</h1>
+</div>
+<div class="cell code" data-execution_count="23" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-24T12:05:19.589143Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-24T12:05:19.588562Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-24T12:05:19.601548Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-24T12:05:19.600247Z&quot;}" data-papermill="{&quot;duration&quot;:3.6546e-2,&quot;end_time&quot;:&quot;2023-09-24T12:05:19.604080&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-09-24T12:05:19.567534&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]">
+<div class="sourceCode" id="cb32"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> data.drop(<span class="st">&quot;diabetes&quot;</span>,axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> data.diabetes</span></code></pre></div>
+</div>
+<div class="cell code" data-execution_count="24" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-24T12:05:19.652426Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-24T12:05:19.651599Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-24T12:05:19.686709Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-24T12:05:19.685718Z&quot;}" data-papermill="{&quot;duration&quot;:6.2456e-2,&quot;end_time&quot;:&quot;2023-09-24T12:05:19.689250&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-09-24T12:05:19.626794&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]">
+<div class="sourceCode" id="cb33"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>x_train, x_test, y_train, y_test <span class="op">=</span> train_test_split(x,y,test_size<span class="op">=</span><span class="fl">0.3</span>,random_state<span class="op">=</span><span class="dv">42</span>)</span></code></pre></div>
+</div>
+<div class="cell code" data-execution_count="25" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-24T12:05:19.725165Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-24T12:05:19.723990Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-24T12:05:19.730215Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-24T12:05:19.729330Z&quot;}" data-papermill="{&quot;duration&quot;:2.6723e-2,&quot;end_time&quot;:&quot;2023-09-24T12:05:19.732653&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-09-24T12:05:19.705930&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]">
+<div class="sourceCode" id="cb34"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>y_train <span class="op">=</span> np.array(y_train).reshape(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>y_test <span class="op">=</span> np.array(y_test).reshape(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>)</span></code></pre></div>
+</div>
+<div class="cell code" data-execution_count="26" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-24T12:05:19.770592Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-24T12:05:19.769808Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-24T12:05:19.777045Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-24T12:05:19.775857Z&quot;}" data-papermill="{&quot;duration&quot;:2.8941e-2,&quot;end_time&quot;:&quot;2023-09-24T12:05:19.779652&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-09-24T12:05:19.750711&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]">
+<div class="sourceCode" id="cb35"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;x train: &quot;</span>,x_train.shape)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;x test: &quot;</span>,x_test.shape)</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;y train: &quot;</span>,y_train.shape)</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;y test: &quot;</span>,y_test.shape)</span></code></pre></div>
+<div class="output stream stdout">
+<pre><code>x train:  (70000, 7)
+x test:  (30000, 7)
+y train:  (70000, 1)
+y test:  (30000, 1)
+</code></pre>
+</div>
+</div>
+<div class="cell code" data-execution_count="27" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-24T12:05:19.816066Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-24T12:05:19.815682Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-24T12:05:20.352880Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-24T12:05:20.351726Z&quot;}" data-papermill="{&quot;duration&quot;:0.559677,&quot;end_time&quot;:&quot;2023-09-24T12:05:20.356750&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-09-24T12:05:19.797073&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]">
+<div class="sourceCode" id="cb37"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>logreg <span class="op">=</span> linear_model.LogisticRegression(random_state <span class="op">=</span> <span class="dv">42</span>,max_iter<span class="op">=</span> <span class="dv">200</span>,)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;test accuracy: </span><span class="sc">{}</span><span class="st"> &quot;</span>.<span class="bu">format</span>(logreg.fit(x_train, y_train).score(x_test, y_test)))</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;train accuracy: </span><span class="sc">{}</span><span class="st"> &quot;</span>.<span class="bu">format</span>(logreg.fit(x_train, y_train).score(x_train, y_train)))</span></code></pre></div>
+<div class="output stream stdout">
+<pre><code>test accuracy: 0.9587666666666667 
+train accuracy: 0.9610571428571428 
+</code></pre>
+</div>
+</div>
+<div class="cell code" data-execution_count="28" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-24T12:05:20.460434Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-24T12:05:20.458872Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-24T12:05:20.737472Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-24T12:05:20.735842Z&quot;}" data-papermill="{&quot;duration&quot;:0.347895,&quot;end_time&quot;:&quot;2023-09-24T12:05:20.742196&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-09-24T12:05:20.394301&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]">
+<div class="sourceCode" id="cb39"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> logreg.fit(x_train, y_train).predict(x_test)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>cm <span class="op">=</span> confusion_matrix(y_test,y_pred)</span></code></pre></div>
+</div>
+<div class="cell code" data-execution_count="29" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-09-24T12:05:20.819871Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-09-24T12:05:20.819018Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-09-24T12:05:21.113143Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-09-24T12:05:21.112012Z&quot;}" data-papermill="{&quot;duration&quot;:0.336954,&quot;end_time&quot;:&quot;2023-09-24T12:05:21.116009&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-09-24T12:05:20.779055&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]">
+<div class="sourceCode" id="cb40"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>ax<span class="op">=</span> plt.subplot()</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>sns.heatmap(cm, annot<span class="op">=</span><span class="va">True</span>, fmt<span class="op">=</span><span class="st">&#39;g&#39;</span>, ax<span class="op">=</span>ax)<span class="op">;</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">&#39;Predicted labels&#39;</span>)<span class="op">;</span>ax.set_ylabel(<span class="st">&#39;True labels&#39;</span>)<span class="op">;</span> </span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">&#39;Confusion Matrix&#39;</span>)<span class="op">;</span> </span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>ax.xaxis.set_ticklabels([<span class="st">&#39;diabetes&#39;</span>,<span class="st">&#39;not_diabetes&#39;</span>])<span class="op">;</span> ax.yaxis.set_ticklabels([<span class="st">&#39;diabetes&#39;</span>,<span class="st">&#39;not_diabetes&#39;</span>])<span class="op">;</span></span></code></pre></div>
+<div class="output display_data">
+  <p><img src="{{ url_for('static', filename='img/colab/05.png') }}" /></p>
+</div>
+</div>
+</body>
+</html>

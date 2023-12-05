@@ -759,5 +759,17 @@ def get_collection_data(collection_name):
 
 
 
+
+@app.route('/admin/analyse')
+@onlyAdmin
+def analyse():
+    admin = session.get('admin')
+    if admin:
+        return render_template('admin/colab.html',admin=admin)
+    
+
+
+
+
 if __name__ == '__main__':
     app.run(debug=True)
