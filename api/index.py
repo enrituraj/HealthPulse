@@ -97,11 +97,12 @@ def error_404():
     return '404 error'
 
 @app.route('/')
-@login_required
 def home():
     user = session.get('user')
     if user:
         return render_template('index.html', user=user)
+    else:
+        return render_template('landing_page.html')
         
 
         
